@@ -1,8 +1,14 @@
-import React from "react";
+//import React from "react";
+import React, { useState } from 'react';
 
 import { Text, Button } from "components";
 
 const DataCollection = (props) => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
   return (
     <>
       <div className={props.className}>
@@ -12,7 +18,7 @@ const DataCollection = (props) => {
             as="h4"
             variant="h4"
           >
-            Target
+            {props.target}
           </Text>
           <Text
             className="font-inter sm:ml-[0] ml-[91px] sm:mt-[0] mt-[2px] not-italic text-black_900 text-left w-[auto]"
@@ -21,20 +27,24 @@ const DataCollection = (props) => {
           >
             Child Response?
           </Text>
-          <Text
-            className="font-inter left-[20px] mb-[2px] sm:ml-[0] ml-[9px] not-italic relative text-black_900 text-left w-[auto]"
-            as="h4"
-            variant="h4"
-          >
+          <label>
+            <input
+              type="radio"
+              value="Y"
+              checked={selectedOption === 'Y'}
+              onChange={handleOptionChange}
+            />
             Y
-          </Text>
-          <Text
-            className="font-inter left-[25px] mb-[2px] sm:ml-[0] ml-[26px] not-italic relative text-black_900 text-left w-[auto]"
-            as="h4"
-            variant="h4"
-          >
+         </label>
+         <label>
+            <input
+              type="radio"
+              value="N"
+              checked={selectedOption === 'N'}
+              onChange={handleOptionChange}
+            />
             N
-          </Text>
+         </label>
         </div>
         <Button className="bg-red_A700 cursor-pointer font-inter font-normal leading-[normal] left-[125px] mb-[2px] min-w-[185px] not-italic py-[5px] relative text-[20px] text-center text-white_A700 top-[] w-[auto]">
           Replace
@@ -45,5 +55,4 @@ const DataCollection = (props) => {
 };
 
 DataCollection.defaultProps = {};
-
 export default DataCollection;

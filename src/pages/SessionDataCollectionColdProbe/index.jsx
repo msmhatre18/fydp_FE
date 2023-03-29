@@ -22,7 +22,7 @@ const SessionDataCollectionColdProbePage = () => {
               as="h3"
               variant="h3"
             >
-              Data Collection
+              Data Collection Cold Probe
             </Text>
             <Img
               src="images/img_arrowup.svg"
@@ -46,9 +46,7 @@ const SessionDataCollectionColdProbePage = () => {
                   name="group170"
                   placeholder="Session Date"
                 ></Datepicker>
-                <div className="bg-red_A700 flex h-[25px] items-center justify-start md:mt-[0] my-[7px] p-[6px] rounded-[12px] w-[25px]">
-                  <div className="bg-white_A700 h-[5px] my-[4px] w-[93%]"></div>
-                </div>
+                
               </div>
               <div className="flex md:flex-col flex-row gap-[21px] items-center justify-between mt-[53px] w-[100%]">
                 <Input
@@ -57,13 +55,11 @@ const SessionDataCollectionColdProbePage = () => {
                   name="group172"
                   placeholder="Practitioner Initials"
                 ></Input>
-                <div className="bg-red_A700 flex h-[25px] items-center justify-start md:mt-[0] my-[7px] p-[6px] rounded-[12px] w-[25px]">
-                  <div className="bg-white_A700 h-[5px] my-[4px] w-[93%]"></div>
-                </div>
+
               </div>
 
-              <DataCollection target="test" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
-              <DataCollection className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
+              <DataCollection target="Cold Probe 1" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
+              <DataCollection target="Autism 10000000000000000000000" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
               <DataCollection className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
               <DataCollection className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
               <DataCollection className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />

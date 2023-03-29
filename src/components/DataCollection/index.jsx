@@ -1,6 +1,6 @@
 //import React from "react";
 import React, { useState } from 'react';
-
+import './../../styles/DataCollection.css';
 import { Text, Button } from "components";
 
 const DataCollection = (props) => {
@@ -11,23 +11,23 @@ const DataCollection = (props) => {
   };
   return (
     <>
-      <div className={props.className}>
+      <div className={`data-collection ${props.className}`}>
         <div className="flex sm:flex-col flex-row sm:gap-[20px] items-start justify-start md:mt-[0] mt-[5px] md:w-[100%] w-[auto]">
           <Text
-            className="font-inter sm:mt-[0] mt-[2px] not-italic text-black_900 text-left w-[auto]"
+            className="text-container"
             as="h4"
             variant="h4"
           >
             {props.target}
           </Text>
           <Text
-            className="font-inter sm:ml-[0] ml-[91px] sm:mt-[0] mt-[2px] not-italic text-black_900 text-left w-[auto]"
-            as="h4"
-            variant="h4"
+            className="text-container"
+            as="h5"
+            variant="h5"
           >
             Child Response?
           </Text>
-          <label>
+          <label className="radio-container">
             <input
               type="radio"
               value="Y"
@@ -36,7 +36,7 @@ const DataCollection = (props) => {
             />
             Y
          </label>
-         <label>
+         <label className="radio-container">
             <input
               type="radio"
               value="N"
@@ -46,7 +46,7 @@ const DataCollection = (props) => {
             N
          </label>
         </div>
-        <Button className="bg-red_A700 cursor-pointer font-inter font-normal leading-[normal] left-[125px] mb-[2px] min-w-[185px] not-italic py-[5px] relative text-[20px] text-center text-white_A700 top-[] w-[auto]">
+        <Button className="replace-button">
           Replace
         </Button>
       </div>
@@ -56,3 +56,4 @@ const DataCollection = (props) => {
 
 DataCollection.defaultProps = {};
 export default DataCollection;
+

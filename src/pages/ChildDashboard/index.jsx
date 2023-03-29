@@ -1,6 +1,8 @@
 import React from "react";
 
 import { Img, Text, Button } from "components";
+import BehaviorDashData from "components/BehaviorDashData";
+import ProgramsDashData from "components/ProgramsDashData";
 import { useNavigate } from "react-router-dom";
 
 const ChildDashboardPage = () => {
@@ -23,7 +25,7 @@ const ChildDashboardPage = () => {
                 as="h2"
                 variant="h2"
               >
-                Child 1’s Dashboard
+                Child 1’s Dashboard 
               </Text>
               <Text
                 className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[3px] md:ml-[0] ml-[320px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
@@ -34,49 +36,9 @@ const ChildDashboardPage = () => {
               </Text>
             </div>
             <div className="flex md:flex-col flex-row md:gap-[40px] items-center justify-between md:w-[100%] w-[72%]">
-              <div className="bg-bluegray_100 flex flex-col gap-[12px] items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[43%]">
-                <Text
-                  className="mt-[27px] not-italic text-black_900 text-center w-[auto]"
-                  as="h4"
-                  variant="h4"
-                >
-                  Behaviour Data
-                </Text>
-                <Button
-                  className="common-pointer bg-white_A700 cursor-pointer font-normal h-[100px] leading-[normal] not-italic py-[34px] rounded-[50%] sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[100px]"
-                  onClick={() => navigate("/behaviourdata")}
-                >
-                  Icon
-                </Button>
-              </div>
-              <div className="bg-bluegray_100 flex flex-col gap-[10px] items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[43%]">
-                <Text
-                  className="mt-[29px] not-italic text-black_900 text-center w-[auto]"
-                  as="h4"
-                  variant="h4"
-                >
-                  Programs for Child 1
-                </Text>
-                <Button
-                  className="common-pointer bg-white_A700 cursor-pointer font-normal h-[100px] leading-[normal] not-italic py-[34px] rounded-[50%] sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[100px]"
-                  onClick={() => navigate("/programsnoneopen")}
-                >
-                  Icon
-                </Button>
-              </div>
+              <BehaviorDashData target = "Child 1" className="bg-bluegray_100 flex flex-col items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[auto]" />
+              <ProgramsDashData target = "Child 1" className="bg-bluegray_100 flex flex-col items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[auto]" />
             </div>
-          </div>
-          <div className="bg-bluegray_100 flex flex-col gap-[12px] items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[31%]">
-            <Text
-              className="mt-[27px] not-italic text-black_900 text-center w-[auto]"
-              as="h4"
-              variant="h4"
-            >
-              Mand Data
-            </Text>
-            <Button className="bg-white_A700 cursor-pointer font-normal h-[100px] leading-[normal] not-italic py-[34px] rounded-[50%] sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[100px]">
-              Icon
-            </Button>
           </div>
         </div>
       </div>

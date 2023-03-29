@@ -1,0 +1,48 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #0041a3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (min-width: 640px) {
+    .home-page {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+    }
+  
+    .text-container h4 {
+      font-size: 18px;
+      white-space: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .text-container {
+    align-items: left;
+    width: 100%;
+    max-width: 300px;
+    inline-size: 200px;
+    margin: 0 10px 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+    color: white;
+  }
+  
+  .text-container h4 {
+    font-size: clamp(12px, 1.5vw, 24px);
+  }
+  
+  .text-container h5 {
+    font-size: clamp(12px, 1.5vw, 24px);
+  }
+  

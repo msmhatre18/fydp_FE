@@ -1,24 +1,24 @@
 import React from "react";
-
+import './../../styles/Homepage.css';
 import { Text } from "components";
 
 const ChildRowUniqueID = (props) => {
   return (
     <>
-      <div className={props.className}>
+      <div className={`home-page ${props.className}`}>
         <Text
-          className="font-inter mb-[7px] mt-[2px] not-italic text-black_900 text-center w-[auto]"
+          className="text-container"
           as="h4"
           variant="h4"
         >
-          Child 2
+          {props.prop1}
         </Text>
         <Text
-          className="bottom-[3px] font-inter left-[25px] my-[4px] not-italic relative text-black_900 text-center w-[auto]"
-          as="h4"
-          variant="h4"
+          className="text-container"
+          as="h5"
+          variant="h5"
         >
-          Unique ID
+          {props.prop2}
         </Text>
       </div>
     </>

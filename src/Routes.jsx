@@ -38,7 +38,6 @@ const SessionDataCollectionMassTrial = React.lazy(() =>
 const ProgramHistoryPageProgramTemplate = React.lazy(() =>
   import("pages/ProgramHistoryPageProgramTemplate")
 );
-const ProgramsDropdown = React.lazy(() => import("pages/ProgramsDropdown"));
 const ForgotPasswordPage = React.lazy(() => import("pages/ForgotPasswordPage"));
 const SessionDataCollectionColdProbe = React.lazy(() =>
   import("pages/SessionDataCollectionColdProbe")
@@ -80,7 +79,6 @@ const ProjectRoutes = () => {
             element={<SessionDataCollectionColdProbe />}
           />
           <Route path="/forgotpasswordpage" element={<ForgotPasswordPage />} />
-          <Route path="/programsdropdown" element={<ProgramsDropdown />} />
           <Route
             path="/programhistorypageprogramtemplate"
             element={<ProgramHistoryPageProgramTemplate />}

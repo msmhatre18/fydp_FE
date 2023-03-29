@@ -1,5 +1,5 @@
 import React from "react";
-
+import './../../styles/ProgramRow.css';
 import { Img, Text, List, Button } from "components";
 import ChildProgram from "components/ChildProgram";
 import { useNavigate } from "react-router-dom";
@@ -42,125 +42,17 @@ const ProgramsNoneOpenPage = () => {
                 {new Array(5).fill({}).map((props, index) => (
                   <React.Fragment key={`ChildProgram${index}`}>
                     <ChildProgram
-                      className="bg-cover bg-no-repeat flex flex-1 flex-col h-[64px] items-center justify-end my-[0] p-[10px] w-[100%]"
-                      style={{
-                        backgroundImage: "url('images/img_group163.svg')",
-                      }}
+                      className=  "bg-cover bg-no-repeat flex flex-1 flex-col h-[64px] items-center justify-end my-[0] p-[10px] w-[100%]"
+                      name={`Child ${ index + 1}`}
                       {...props}
                     />
                   </React.Fragment>
                 ))}
               </List>
-              <List
-                className="flex-col gap-[1px] grid items-center w-[100%]"
-                orientation="vertical"
-              >
-                <div
-                  className="bg-cover bg-no-repeat flex flex-1 h-[66px] items-start justify-start my-[0] p-[11px] w-[100%]"
-                  style={{ backgroundImage: "url('images/img_group163.svg')" }}
-                >
-                  <div className="flex md:flex-col flex-row md:gap-[20px] items-start justify-start mb-[2px] md:ml-[0] ml-[9px] md:w-[100%] w-[88%]">
-                    <Text
-                      className="md:mt-[0] mt-[7px] not-italic text-black_900 text-left w-[auto]"
-                      as="h4"
-                      variant="h4"
-                    >
-                      Program Name/ID
-                    </Text>
-                    <Button className="bg-blue_600 cursor-pointer font-normal leading-[normal] left-[45px] min-w-[254px] md:ml-[0] ml-[300px] not-italic py-[8px] relative rounded-[21px] text-[20px] text-center text-white_A700 w-[auto]">
-                      View History
-                    </Button>
-                    <Text
-                      className="font-extrabold md:ml-[0] ml-[74px] md:mt-[0] mt-[11px] text-black_900 text-left w-[auto]"
-                      as="h5"
-                      variant="h5"
-                    >
-                      Mastered
-                    </Text>
-                  </div>
-                </div>
-                <div
-                  className="bg-cover bg-no-repeat flex flex-1 h-[66px] items-start justify-end my-[0] p-[11px] w-[100%]"
-                  style={{ backgroundImage: "url('images/img_group163.svg')" }}
-                >
-                  <div className="flex md:flex-col flex-row md:gap-[20px] items-end justify-start md:ml-[0] ml-[9px] mr-[auto] mt-[2px] md:w-[100%] w-[88%]">
-                    <Text
-                      className="mb-[4px] md:mt-[0] mt-[7px] not-italic text-black_900 text-left w-[auto]"
-                      as="h4"
-                      variant="h4"
-                    >
-                      Program Name/ID
-                    </Text>
-                    <Button className="bg-blue_600 bottom-[25px] cursor-pointer font-normal leading-[normal] left-[45px] min-w-[254px] md:ml-[0] ml-[300px] not-italic py-[8px] relative rounded-[21px] text-[20px] text-center text-white_A700 w-[auto]">
-                      View History
-                    </Button>
-                    <Text
-                      className="bottom-[30px] font-extrabold md:ml-[0] ml-[74px] md:mt-[0] my-[8px] relative text-black_900 text-left w-[auto]"
-                      as="h5"
-                      variant="h5"
-                    >
-                      Mastered
-                    </Text>
-                  </div>
-                </div>
-                <div
-                  className="bg-cover bg-no-repeat flex flex-1 h-[67px] items-start justify-start my-[0] p-[12px] w-[100%]"
-                  style={{ backgroundImage: "url('images/img_group163.svg')" }}
-                >
-                  <div className="flex md:flex-col flex-row md:gap-[20px] items-start justify-start md:ml-[0] ml-[8px] md:w-[100%] w-[88%]">
-                    <Text
-                      className="md:mt-[0] mt-[8px] not-italic text-black_900 text-left w-[auto]"
-                      as="h4"
-                      variant="h4"
-                    >
-                      Program Name/ID
-                    </Text>
-                    <Button className="bg-blue_600 cursor-pointer font-normal leading-[normal] left-[45px] min-w-[254px] md:ml-[0] ml-[300px] not-italic py-[8px] relative rounded-[21px] text-[20px] text-center text-white_A700 w-[auto]">
-                      View History
-                    </Button>
-                    <Text
-                      className="font-extrabold md:ml-[0] ml-[74px] md:mt-[0] mt-[12px] text-black_900 text-left w-[auto]"
-                      as="h5"
-                      variant="h5"
-                    >
-                      Mastered
-                    </Text>
-                  </div>
-                </div>
-                <div
-                  className="bg-cover bg-no-repeat flex flex-1 h-[66px] items-start justify-end my-[0] p-[10px] w-[100%]"
-                  style={{ backgroundImage: "url('images/img_group163.svg')" }}
-                >
-                  <div className="flex md:flex-col flex-row md:gap-[20px] items-start justify-start md:ml-[0] ml-[10px] mr-[auto] mt-[4px] md:w-[100%] w-[88%]">
-                    <Text
-                      className="md:mt-[0] mt-[6px] not-italic text-black_900 text-left w-[auto]"
-                      as="h4"
-                      variant="h4"
-                    >
-                      Program Name/ID
-                    </Text>
-                    <Button className="bg-blue_600 cursor-pointer font-normal leading-[normal] left-[45px] min-w-[254px] md:ml-[0] ml-[300px] not-italic py-[8px] relative rounded-[21px] text-[20px] text-center text-white_A700 w-[auto]">
-                      View History
-                    </Button>
-                    <Text
-                      className="font-extrabold md:ml-[0] ml-[74px] md:mt-[0] mt-[4px] text-black_900 text-left w-[auto]"
-                      as="h5"
-                      variant="h5"
-                    >
-                      Mastered
-                    </Text>
-                  </div>
-                </div>
-              </List>
-              <Button className="bg-transparent cursor-pointer font-normal leading-[normal] min-w-[45px] md:ml-[0] ml-[20px] mt-[23px] not-italic sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[auto]">
+              <Button className="create-button">
                 Add
               </Button>
             </div>
-            <Img
-              src="images/img_scrollbar.svg"
-              className="h-[373px] w-[auto]"
-              alt="scrollbar"
-            />
           </div>
         </div>
       </div>

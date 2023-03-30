@@ -2,31 +2,36 @@ import React, { useState } from "react";
 import { Text, Img, Input } from "components";
 import { useNavigate } from "react-router-dom";
 
-function BehaviorsTable({ behaviors, handleIncrement, handleDecrement, setNewBehavior, handleAddBehavior }) {
+
+import './../../styles/table.css';
+
+function BehaviorsTable({ behaviors, handleIncrement, handleDecrement, handleDelete, setNewBehavior, handleAddBehavior }) {
   // added handleAddBehavior as a prop to the component
   return (
-    <table>
+    <table className="table-container">
       <thead>
         <tr>
-          <th>Behavior</th>
-          <th>Count</th>
-          <th>Actions</th>
+          <th className="header">Behavior</th>
+          <th className="header">Count</th>
+          <th className="header">Actions</th>
         </tr>
       </thead>
       <tbody>
         {behaviors.map((behavior, index) => (
           <tr key={index}>
-            <td>{behavior.name}</td>
-            <td>{behavior.count}</td>
+            <td className="behavior-name">{behavior.name}</td>
+            <td className="behavior-count">{behavior.count}</td>
             <td>
-              <button onClick={() => handleIncrement(index)}>+</button>
-              <button onClick={() => handleDecrement(index)}>-</button>
+              <button className="btn" style={{ marginRight: '50px', padding: '20px' }} onClick={() => handleIncrement(index)}>+</button>
+              <button className="btn" style={{ marginRight: '50px', padding: '20px', backgroundColor: 'red' }} onClick={() => handleDecrement(index)}>-</button>
+              <button className="btn" style={{ marginRight: '50px', padding: '20px' }} onClick={() => handleDelete(index)}>Delete</button>
             </td>
           </tr>
         ))}
         <tr>
-          <td>
+          <td className="td">
             <input
+              className="input"
               type="text"
               name="newBehavior"
               placeholder="Add Behavior"
@@ -35,7 +40,7 @@ function BehaviorsTable({ behaviors, handleIncrement, handleDecrement, setNewBeh
           </td>
           <td>0</td>
           <td>
-            <button onClick={handleAddBehavior}>Add</button>
+            <button className="btn" onClick={handleAddBehavior}>Add</button>
           </td>
         </tr>
       </tbody>
@@ -59,6 +64,12 @@ const SessionBehaviouralDataPage = () => {
   const handleDecrement = (index) => {
     const newBehaviors = [...behaviors];
     newBehaviors[index].count--;
+    setBehaviors(newBehaviors);
+  };
+
+  const handleDelete = (index) => {
+    const newBehaviors = [...behaviors];
+    newBehaviors.splice(index, 1);
     setBehaviors(newBehaviors);
   };
 
@@ -86,21 +97,37 @@ const SessionBehaviouralDataPage = () => {
 
   return (
     <div>
-      <Text as="h1">Session Behavioural Data</Text>
-      <BehaviorsTable
-        behaviors={behaviors}
-        handleIncrement={handleIncrement}
-        handleDecrement={handleDecrement}
-        setNewBehavior={setNewBehavior}
-        handleAddBehavior={handleAddBehavior}
-      />
-      <Input
-        type="text"
-        name="sessionNotes"
-        placeholder="Add Session Notes"
-      />
-      <button onClick={handleSave}>Save</button>
+      <div className="header-container">
+        <Img
+          src="images/img_arrowup.svg"
+          className=""
+          onClick={() => navigate(-1)}
+          alt="arrowup"
+        />
+        <Text className="title">Session Behavioural Data</Text>
+        <Text
+          className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[9px] md:ml-[0] ml-[7px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
+          variant="body2"
+          onClick={() => navigate("/")}
+        >
+          Logout
+        </Text>
+        
+      </div>
+      <div className="table-container">
+        
+        <BehaviorsTable
+          behaviors={behaviors}
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+          handleDelete={handleDelete}
+          setNewBehavior={setNewBehavior}
+          handleAddBehavior={handleAddBehavior}
+        />
+        <button className="btn" style={{ marginTop: '20px', padding: '20px', gap: '20px' }} onClick={handleSave}>Save</button>
+      </div>
     </div>
+
   );
 };
 

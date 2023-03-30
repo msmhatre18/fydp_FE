@@ -2,6 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
 import NotFound from "pages/NotFound";
+import NewPasswordPage from "pages/NewPassword";
+
+const AccountDashboardPage = React.lazy(() =>
+  import("pages/AccountDashboard")
+);
+
+
+const CreatePractitionerPage = React.lazy(() =>
+  import("pages/CreatePractitioner")
+);
+
 const ProgramDetailsEntryMassTrialTargets = React.lazy(() =>
   import("pages/ProgramDetailsEntryMassTrialTargets")
 );
@@ -73,7 +84,10 @@ const ProjectRoutes = () => {
           />
           <Route path="/homepagepatients" element={<Homepagepatients />} />
           <Route path="/childdashboard" element={<ChildDashboard />} />
+          <Route path="/createpractitioner" element={<CreatePractitionerPage />} />
+          <Route path="/accountdashboard" element={<AccountDashboardPage />} />
           <Route path="/programsnoneopen" element={<ProgramsNoneOpen />} />
+          <Route path="/newpassword" element={<NewPasswordPage />} />
           <Route
             path="/sessiondatacollectioncoldprobe"
             element={<SessionDataCollectionColdProbe />}

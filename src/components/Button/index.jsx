@@ -6,11 +6,12 @@ const Button = ({
   className = "",
   leftIcon,
   rightIcon,
+  onClick,
 
   ...restProps
 }) => {
   return (
-    <button className={`${className}`} {...restProps}>
+    <button className={`${className}`} onClick={onClick} {...restProps}>
       {!!leftIcon && leftIcon}
       {children}
       {!!rightIcon && rightIcon}

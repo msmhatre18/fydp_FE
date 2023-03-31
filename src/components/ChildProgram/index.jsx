@@ -16,7 +16,7 @@ const ChildProgram = (props) => {
           </Text>
           <div className="flex md:flex-col flex-row items-start justify-center mb-[7px] md:mt-[2px] mt-[2px]">
             <div className="button-container">
-              <button className="create-button">Complete/Start Probe</button>
+              {!props.isMastered && <button className="create-button">Complete / Start Session</button>}
               <button className="create-button">View History</button>
             </div>
             <Text

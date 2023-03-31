@@ -14,11 +14,15 @@ const ForgotPasswordPagePage = () => {
 
 
   const handleSubmit = () => {
+    const uri = encodeURI("account/forgot-password");
     axiosClient
-        .post("/forgot-password", { email: email})
+        .post(uri, { email: email})
         .then((response) => {
           console.log(response);
           navigate("/passwordrequestedpage");
+        })
+        .catch((err) => {
+          console.log(err);
         })
   }
 

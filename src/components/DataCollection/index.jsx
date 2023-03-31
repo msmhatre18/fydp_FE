@@ -46,9 +46,7 @@ const DataCollection = (props) => {
             N
          </label>
         </div>
-        <Button className="replace-button">
-          Replace
-        </Button>
+        <Button className="replace-button" style={{ display: "block", margin: "auto", textAlign: "center", verticalAlign: "middle" }}>Replace</Button>
       </div>
     </>
   );

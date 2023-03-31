@@ -45,20 +45,20 @@ const SessionDataCollectionMassTrialPage = () => {
                   name="group170"
                   placeholder="Session Date"
                 ></Datepicker>
-                
+
               </div>
               <div className="flex md:flex-col flex-row gap-[21px] items-center justify-between mt-[53px] w-[100%]">
                 <Input
-                  wrapClassName="bg-white_A700 md:flex-1 outline outline-[2px] outline-black_900 pl-[13px] pr-[35px] py-[4px] md:w-[100%] w-[auto]"
-                  className="font-normal leading-[normal] md:text-[22px] not-italic p-[0] placeholder:text-bluegray_100 sm:pr-[20px] sm:text-[20px] text-[24px] text-bluegray_100 text-left w-[100%]"
+                  wrapClassName="input-box"
+                  className="input"
                   name="group172"
                   placeholder="Practitioner Initials"
                 ></Input>
 
               </div>
 
-              <DataCollection target="Cold Probe 1" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
-              <DataCollection target="Autism 10000000000000000000000" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
+              <DataCollection target="Mass Trial 1" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
+              <DataCollection target="Mass Trial 2" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
               <DataCollection className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
               <DataCollection className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
               <DataCollection className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />

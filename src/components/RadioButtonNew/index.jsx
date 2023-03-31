@@ -18,7 +18,7 @@ function RadioButtons(props) {
     if (selectedValue === 'Cold Probe Collection') {
       navigate('/ProgramDetailsEntryColdProbe');
     } else if (selectedValue === 'Mass Trial Collection') {
-      navigate('/ProgramsDetailsEntryMassTrial');
+      navigate('/ProgramDetailsEntryMassTrial');
     } 
   }
 

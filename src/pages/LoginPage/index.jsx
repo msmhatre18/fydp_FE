@@ -29,7 +29,7 @@ const LoginPagePage = () => {
         console.log("in then");
         console.log(response);
         sessionStorage.setItem("sessionToken", response.data.sessionToken);
-        navigate("/homepagepatients");
+        navigate("/accountdashboard");
       })
       .catch((error) => {
         console.log("in error");

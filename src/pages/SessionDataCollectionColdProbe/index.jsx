@@ -3,7 +3,7 @@ import React from "react";
 import { Text, Img, Datepicker, Input, Button } from "components";
 import DataCollection from "components/DataCollection";
 import { useNavigate } from "react-router-dom";
-
+import './../../styles/input.css';
 const SessionDataCollectionColdProbePage = () => {
   const navigate = useNavigate();
 
@@ -50,8 +50,8 @@ const SessionDataCollectionColdProbePage = () => {
               </div>
               <div className="flex md:flex-col flex-row gap-[21px] items-center justify-between mt-[53px] w-[100%]">
                 <Input
-                  wrapClassName="bg-white_A700 md:flex-1 outline outline-[2px] outline-black_900 pl-[13px] pr-[35px] py-[4px] md:w-[100%] w-[auto]"
-                  className="font-normal leading-[normal] md:text-[22px] not-italic p-[0] placeholder:text-bluegray_100 sm:pr-[20px] sm:text-[20px] text-[24px] text-bluegray_100 text-left w-[100%]"
+                   wrapClassName="input-box"
+                   className="input"
                   name="group172"
                   placeholder="Practitioner Initials"
                 ></Input>

@@ -10,8 +10,8 @@ const AccountDashboardPage = () => {
     return (
         <>
             <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[15px] w-[100%]">
-                <div className="flex flex-col gap-[56px] items-center justify-start max-w-[1103px] mb-[103px] mt-[2px] mx-[auto] md:px-[20px] w-[100%]">
-                    <div className="flex flex-col gap-[56px] items-center justify-start w-[100%]">
+                <div className="flex flex-col gap-[56px] items-center justify-start max-w-[1103px] mb-[103px] mt-[2px] mx-[auto] md:px-[20px] w-[100%]" >
+                    <div className="flex flex-col gap-[56px] items-center justify-start w-[100%]" style={{ display: 'flex', gap: '50px', justifyContent: 'center' }}>
                         <div className="data-collection">
                             <Img
                                 src="images/img_arrowup.svg"
@@ -34,13 +34,15 @@ const AccountDashboardPage = () => {
                                 Logout
                             </Text>
                         </div>
-                        <div className="data-container" style={{ display: 'flex', gap: '50px', }}>
-                            <Button className="replace-button">
-                                Change Password
+                        <div className="flex md:flex-col flex-row md:gap-[40px] items-center justify-between md:w-[100%] w-[72%]"  style={{ display: 'flex', gap: '50px', justifyContent: 'center' }}>
+                            <Button className="replace-button" onClick={() => navigate("/Homepagepatients")}>
+                                View Clients
                             </Button>
-                            <Button className="replace-button" onClick={() => navigate("/CreatePractitioner")}>
+                            <Button className="replace-button" onClick={() => navigate("/CreatePractitioner")} >
                                 Invite New Practitioners
-                                
+                            </Button>
+                            <Button className="replace-button" onClick={() => navigate("/NewPassword")}>
+                                Change Password
                             </Button>
                         </div>
                     </div>

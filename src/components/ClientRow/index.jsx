@@ -3,7 +3,7 @@ import './../../styles/Homepage.css';
 import { Text, Button } from "components";
 import { useNavigate } from "react-router-dom";
 
-const ClientRow = ({className, kidsabilityId}) => {
+const ClientRow = ({className, kidsAbilityId}) => {
   const navigate = useNavigate();
   return (
     <>
@@ -13,11 +13,11 @@ const ClientRow = ({className, kidsabilityId}) => {
           as="h4"
           variant="h4"
         >
-          {kidsabilityId}
+          {kidsAbilityId}
         </Text>
         <Button
               className="common-pointer bg-blue_600 cursor-pointer font-normal leading-[normal] min-w-[254px] md:ml-[0] ml-[561px] not-italic py-[8px] rounded-[21px] text-[20px] text-center text-white_A700 w-[auto]"
-              onClick={() => navigate("/programsnoneopen")}
+              onClick={() => navigate("/programsnoneopen",  { state: { kidsAbilityId: kidsAbilityId } })}
             >
               View Programs
         </Button>

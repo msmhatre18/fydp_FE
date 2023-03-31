@@ -1,12 +1,48 @@
 import React from "react";
-
+import { useState, useEffect } from "react";
 import ClientRow from "components/ClientRow";
 import { Text, Button, Img } from "components";
 import { useNavigate } from "react-router-dom";
+import { axiosClient } from "constants/constants";
+
 
 const HomepagepatientsPage = () => {
   const navigate = useNavigate();
+  const [clients, setClients] = useState(null);
 
+  useEffect(() => {
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    axiosClient.get("/practitioner/client", {
+        headers: {
+        'sessionToken': sessionToken,
+      }
+        })
+      .then(res => {
+        console.log(res);
+        setClients(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
+
+  
+
+
+  let clientRows;
+  if(!clients) {
+    clientRows = (
+      <></>
+    );
+  }
+  else {
+    clientRows = (
+          <>
+            {clients.map(client => <ClientRow key={client.kidsAbilityId} kidsAbilityId={client.kidsAbilityId} className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />)}
+          </>
+    );
+  }
+  
   return (
     <>
       <div className="bg-white_A700 flex flex-col font-inter gap-[12px] items-center justify-end mx-[auto] pt-[11px] w-[100%]">
@@ -34,14 +70,10 @@ const HomepagepatientsPage = () => {
         </div>
         
         <div className="flex flex-col items-center justify-center mt-10 w-full md:flex-row md:gap-4 md:justify-between md:mt-20">        
-          <ClientRow kidsabilityId="Child 1" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
-          <ClientRow kidsabilityId="Child 2" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
+         {clientRows}
         </div>
 
         <div className="flex md:flex-col flex-row md:gap-[20px] items-center justify-center mt-[15px] md:w-[100%] w-[96%]">
-            <Button className="bg-transparent cursor-pointer font-normal leading-[normal] min-w-[44px] not-italic sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[auto]">
-              Edit
-            </Button>
             <Button className="bg-transparent cursor-pointer font-normal leading-[normal] min-w-[47px] md:ml-[0] ml-[36px] not-italic sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[auto]">
               Add
             </Button>

@@ -2,10 +2,14 @@ import React from "react";
 import './../../styles/ProgramRow.css';
 import { Img, Text, List, Button } from "components";
 import ChildProgram from "components/ChildProgram";
-import { useNavigate } from "react-router-dom";
+import { axiosClient } from "constants/constants";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ProgramsNoneOpenPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const kidsAbilityId = location.state.kidsAbilityId;
+  console.log(kidsAbilityId);
 
   return (
     <>
@@ -23,7 +27,7 @@ const ProgramsNoneOpenPage = () => {
               as="h2"
               variant="h2"
             >
-              Programs for Child 1
+              Programs for {kidsAbilityId}
             </Text>
             <Text
               className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[4px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"

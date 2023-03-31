@@ -1,6 +1,6 @@
 import React from "react";
 
-import ChildRowUniqueID from "components/ChildRowUniqueID";
+import ClientRow from "components/ClientRow";
 import { Text, Button, Img } from "components";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const HomepagepatientsPage = () => {
             as="h2"
             variant="h2"
           >
-            Homepage
+            Clients
           </Text>
           <Text
             className="bg-white_A700 flex h-[40px] items-center justify-center mb-[12px] md:ml-[0] ml-[446px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
@@ -34,7 +34,8 @@ const HomepagepatientsPage = () => {
         </div>
         
         <div className="flex flex-col items-center justify-center mt-10 w-full md:flex-row md:gap-4 md:justify-between md:mt-20">        
-          <ChildRowUniqueID prop1="Child 100000000000000000000" prop2="Unique ID 10000000000000000" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
+          <ClientRow kidsabilityId="Child 1" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
+          <ClientRow kidsabilityId="Child 2" className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />
         </div>
 
         <div className="flex md:flex-col flex-row md:gap-[20px] items-center justify-center mt-[15px] md:w-[100%] w-[96%]">
@@ -43,12 +44,6 @@ const HomepagepatientsPage = () => {
             </Button>
             <Button className="bg-transparent cursor-pointer font-normal leading-[normal] min-w-[47px] md:ml-[0] ml-[36px] not-italic sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[auto]">
               Add
-            </Button>
-            <Button
-              className="common-pointer bg-blue_600 cursor-pointer font-normal leading-[normal] min-w-[254px] md:ml-[0] ml-[561px] not-italic py-[8px] rounded-[21px] text-[20px] text-center text-white_A700 w-[auto]"
-              onClick={() => navigate("/programsnoneopen")}
-            >
-              Programs
             </Button>
         </div>
       </div>

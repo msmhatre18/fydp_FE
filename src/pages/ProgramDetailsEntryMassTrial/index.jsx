@@ -17,7 +17,7 @@ const ProgramDetailsEntryMassTrialPage = () => {
                 <Img
                   src="images/img_arrowup.svg"
                   className="common-pointer h-[33px] mb-[2px] sm:mt-[0] mt-[8px] w-[auto]"
-                  onClick={() => navigate("/homepagepatients")}
+                  onClick={() => navigate("/programdetailsentry")}
                   alt="arrowup"
                 />
                 <Text

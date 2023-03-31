@@ -48,7 +48,7 @@ function RadioButtons(props) {
                     />
                     Mass Trial Collection
                 </label>
-                <Button className="replace-button" type="submit">
+                <Button className="replace-button" type="submit" style={{backgroundColor: 'lightgreen' }}>
                     Go
                 </Button>
             </form>

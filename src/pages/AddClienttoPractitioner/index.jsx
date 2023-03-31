@@ -22,7 +22,7 @@ const AddClienttoPractitionerPage = () => {
               as="h2"
               variant="h2"
             >
-              Add Client to Prac
+              Add Client to Practitioner
             </Text>
             <Text
               className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[33px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
@@ -44,11 +44,6 @@ const AddClienttoPractitionerPage = () => {
                 isMulti={false}
               ></SelectBox>
             </div>
-            <Img
-              src="images/img_scrollbar.svg"
-              className="h-[373px] md:mt-[0] mt-[55px] w-[auto]"
-              alt="scrollbar"
-            />
           </div>
         </div>
       </div>

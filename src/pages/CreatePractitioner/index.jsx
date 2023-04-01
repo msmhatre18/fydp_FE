@@ -1,12 +1,51 @@
 import React from "react";
-
+import { useState } from "react";
 import { Img, Text, Button } from "components";
 import './../../styles/DataCollection.css';
 import './../../styles/input.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { axiosClient } from "constants/constants";
 
 const CreatePractitionerPage = () => {
     const navigate = useNavigate();
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [giveAdminRights, setGiveAdminRights] = useState(false);
+    const location = useLocation();
+    if(!location.state) return <h1>You are not permitted to view this page</h1>
+    const isAdmin = location.state.isAdmin;
+    if(!location.state || !isAdmin) return <h1>You are not permitted to view this page</h1>
+
+    const handleSubmit = () => {
+        const url = encodeURI("/account/register");
+        const sessionToken = sessionStorage.getItem("sessionToken");
+        axiosClient.post(url, {
+            'email': email,
+            'firstName': firstName,
+            'lastName': lastName,
+            'isAdmin': giveAdminRights
+        }, {
+            headers: {'sessionToken': sessionToken},
+        })
+        .then((res) => {
+            console.log(res);
+            alert(`${firstName} ${lastName} has been successfully registered, they will receive an email with a new temporary password.`);
+            navigate("/accountdashboard");
+        })
+        .catch((err) => {
+            console.log(err);
+            if(err.response.status === 400) {
+                alert(`${firstName} ${lastName} cannot be created, they already exist.`);
+            }
+            else {
+                alert(`${firstName} ${lastName} cannot be created.`);
+            }
+            setFirstName("");
+            setLastName("");
+            setGiveAdminRights(false);
+        })
+    }
 
     return (
         <>
@@ -36,23 +75,40 @@ const CreatePractitionerPage = () => {
                                 Logout
                             </Text>
                         </div>
-                        <div className="data-container" style={{ display: 'flex', flexDirection: 'column', gap: '50px', justifyContent: 'center', alignItems: 'center' }}>
+                        <div className="data-container" style={{ display: 'flex', flexDirection: 'column', gap: '25px', justifyContent: 'center', alignItems: 'center' }}>
                             <input
                                 type="text"
                                 placeholder="Email"
                                 className="input-box"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <input
                                 type="text"
                                 placeholder="First Name"
                                 className="input-box"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
                             />
                             <input
                                 type="text"
                                 placeholder="Last Name"
                                 className="input-box"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
                             />
-                            <button className="replace-button" style={{ backgroundColor: 'lightgreen' }}>Submit</button>
+                            <label> Give Admin Rights?</label>
+                            <input type="checkbox" checked={giveAdminRights} onChange={(e) => setGiveAdminRights(e.target.checked)}/>
+                            
+                            {email.length > 0 && firstName.length > 0 && lastName.length > 0 ? 
+                                <button className="replace-button" style={{ backgroundColor: 'green' }} onClick={handleSubmit}>
+                                    Submit
+                                </button>
+                            :
+                                <button className="replace-button" style={{ backgroundColor: 'grey' }} disabled>
+                                Submit
+                            </button>
+                            }
                         </div>
 
                     </div>

@@ -73,17 +73,17 @@ const LoginPagePage = () => {
             ></Input>
             <Button
               className="replace-button"
-              variant="body1"
-              onClick={() => navigate("/forgotpasswordpage")}
-            >
-              Forgot Password?
-            </Button>
-            <Button
-              className="replace-button"
               onClick={handleLogin}
               style={{ backgroundColor: 'blue' }}
             >
               Log in
+            </Button>
+            <Button
+              className="replace-button"
+              variant="body1"
+              onClick={() => navigate("/forgotpasswordpage")}
+            >
+              Forgot Password?
             </Button>
           </div>
         </div>

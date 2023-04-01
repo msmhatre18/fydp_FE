@@ -1,11 +1,30 @@
 import React from "react";
-
+import { useState, useEffect } from "react";
 import { Img, Text, Button } from "components";
 import './../../styles/DataCollection.css';
 import { useNavigate } from "react-router-dom";
+import { axiosClient } from "constants/constants";
 
 const AccountDashboardPage = () => {
     const navigate = useNavigate();
+    const [practitioner, setPractitioner] = useState(null);
+
+    useEffect(() => {
+        const sessionToken = sessionStorage.getItem("sessionToken");
+        axiosClient.get("/practitioner", {
+            headers: {
+            'sessionToken': sessionToken,
+          }
+            })
+          .then(res => {
+            console.log(res);
+            setPractitioner(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      }, []);
+
 
     return (
         <>
@@ -38,9 +57,10 @@ const AccountDashboardPage = () => {
                             <Button className="replace-button" onClick={() => navigate("/Homepagepatients")}>
                                 View Clients
                             </Button>
-                            <Button className="replace-button" onClick={() => navigate("/CreatePractitioner")} >
+                            {practitioner && practitioner.isAdmin && 
+                            <Button className="replace-button" onClick={() => navigate("/CreatePractitioner", {state: {isAdmin: practitioner.isAdmin}})} >
                                 Invite New Practitioners
-                            </Button>
+                            </Button>}
                             <Button className="replace-button" onClick={() => navigate("/NewPassword")}>
                                 Change Password
                             </Button>

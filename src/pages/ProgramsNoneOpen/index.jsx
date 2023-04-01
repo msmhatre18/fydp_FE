@@ -2,10 +2,55 @@ import React from "react";
 import './../../styles/ProgramRow.css';
 import { Img, Text, List, Button } from "components";
 import ChildProgram from "components/ChildProgram";
-import { useNavigate } from "react-router-dom";
+import { axiosClient } from "constants/constants";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const ProgramsNoneOpenPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const kidsAbilityId = location.state.kidsAbilityId;
+  const [programs, setPrograms] = useState(null);
+
+  useEffect(() => {
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    const uri = encodeURI(`/practitioner/client/${kidsAbilityId}/program`);
+    axiosClient.get(uri, {
+        headers: {
+        'sessionToken': sessionToken,
+      }
+        })
+      .then(res => {
+        console.log(res);
+        setPrograms(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
+
+  let programRows;
+  if(programs) {
+    programRows = (
+      [...programs]
+      .sort((a, b) => {
+        if((a.isMastered && b.isMastered) || (!a.isMastered && !b.isMastered)) return a.name.localeCompare(b.name);
+        else if(!a.isMastered) return a;
+        else return b;
+      })
+      .map(program => (
+        <ChildProgram
+            className =  "bg-cover bg-no-repeat flex flex-1 flex-col h-[64px] items-center justify-end my-[0] p-[10px] w-[100%]"
+            name = {program.name}
+            key = {program.id}
+            isMastered = {program.isMastered}
+            embeddableProgramTemplateLink = {program.embeddableProgramTemplateLink}
+          />
+      ))
+    );
+  }
+  else programRows = <></>;
+  
 
   return (
     <>
@@ -23,7 +68,7 @@ const ProgramsNoneOpenPage = () => {
               as="h2"
               variant="h2"
             >
-              Programs for Child 1
+              Programs for {kidsAbilityId}  
             </Text>
             <Text
               className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[4px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
@@ -39,18 +84,10 @@ const ProgramsNoneOpenPage = () => {
                 className="flex-col gap-[1px] grid items-center w-[100%]"
                 orientation="vertical"
               >
-                {new Array(5).fill({}).map((props, index) => (
-                  <React.Fragment key={`ChildProgram${index}`}>
-                    <ChildProgram
-                      className=  "bg-cover bg-no-repeat flex flex-1 flex-col h-[64px] items-center justify-end my-[0] p-[10px] w-[100%]"
-                      name={`Child ${ index + 1}`}
-                      {...props}
-                    />
-                  </React.Fragment>
-                ))}
+                {programRows}
               </List>
-              <Button className="create-button">
-                Add
+              <Button className="create-button" onClick={() => navigate("/programdetailsentry")}>
+                Create New Program
               </Button>
             </div>
           </div>

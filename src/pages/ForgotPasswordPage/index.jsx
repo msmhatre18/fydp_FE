@@ -1,10 +1,30 @@
 import React from "react";
-
+import { useState } from "react";
 import { Text, Input, Button } from "components";
 import { useNavigate } from "react-router-dom";
+import { axiosClient } from "constants/constants";
 
 const ForgotPasswordPagePage = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+
+  const handleSubmit = () => {
+    const uri = encodeURI("account/forgot-password");
+    axiosClient
+        .post(uri, { email: email})
+        .then((response) => {
+          console.log(response);
+          navigate("/passwordrequestedpage");
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+  }
 
   return (
     <>
@@ -30,10 +50,12 @@ const ForgotPasswordPagePage = () => {
             type="email"
             name="group182"
             placeholder="Email"
+            value={email}
+            onChange={handleEmailChange}
           ></Input>
           <Button
             className="common-pointer bg-blue_600 cursor-pointer font-normal leading-[normal] min-w-[254px] not-italic py-[8px] rounded-[21px] text-[20px] text-black_900 text-center w-[auto]"
-            onClick={() => navigate("/passwordrequestedpage")}
+            onClick={handleSubmit}
           >
             Request Password Reset
           </Button>

@@ -11,6 +11,7 @@ const ProgamRow = (props) => {
             className="text-container"
             as="h4"
             variant="h4"
+            style = {{color: "black", fontWeight: "bold"}}
           >
             {props.target}
           </Text>

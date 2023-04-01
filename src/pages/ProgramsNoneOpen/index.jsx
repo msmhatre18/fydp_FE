@@ -86,7 +86,7 @@ const ProgramsNoneOpenPage = () => {
               >
                 {programRows}
               </List>
-              <Button className="create-button" onClick={() => navigate("/programdetailsentry")}>
+              <Button className="create-button" onClick={() => navigate("/programsdropdownopen")}>
                 Create New Program
               </Button>
             </div>

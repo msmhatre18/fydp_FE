@@ -1,12 +1,26 @@
 import React from "react";
-
+import { useState } from "react";
 import { Img, Text, Button } from "components";
 import './../../styles/DataCollection.css';
 import './../../styles/input.css';
 import { useNavigate } from "react-router-dom";
-
+import { axiosClient } from "constants/constants";
 const NewPasswordPage = () => {
     const navigate = useNavigate();
+    const [password, setPassword] = useState("");
+    const handleSubmit = () => {
+        const url = encodeURI("/account/change-password");
+        const sessionToken = sessionStorage.getItem("sessionToken");
+        axiosClient.post(url, {
+            'password': password
+        }, {
+            headers: {'sessionToken': sessionToken},
+        })
+        .then((res) => {
+            console.log("changed");
+            navigate("/accountdashboard")
+        })
+    }
 
     return (
         <>
@@ -26,7 +40,7 @@ const NewPasswordPage = () => {
                                 variant="h2"
                                 style={{ textAlign: 'center' }}
                             >
-                                Create a New Password
+                                Change Password
                             </Text>
                             <Text
                                 className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[3px] md:ml-[0] ml-[320px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
@@ -41,8 +55,15 @@ const NewPasswordPage = () => {
                                 type="text"
                                 placeholder="New Password"
                                 className="input-box"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
-                            <button className="replace-button" style={{ backgroundColor: 'lightgreen' }}>Submit</button>
+                            {
+                                password.length == 0 ? 
+                                <button className="replace-button" style={{ backgroundColor: 'grey' }} disabled>Submit</button>
+                                    :
+                                <button className="replace-button" style={{ backgroundColor: 'green' }} onClick={handleSubmit}>Submit</button>
+                            }
                         </div>
 
                     </div>

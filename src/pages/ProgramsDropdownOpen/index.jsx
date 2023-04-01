@@ -22,7 +22,7 @@ const ProgramsDropdownOpenPage = () => {
             as="h2"
             variant="h2"
           >
-            Programs
+            Program Templates
           </Text>
           <Text
             className="bg-white_A700 flex h-[40px] items-center justify-center mb-[12px] md:ml-[0] ml-[446px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"

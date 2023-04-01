@@ -43,7 +43,7 @@ const AccountDashboardPage = () => {
                                 as="h2"
                                 variant="h2"
                             >
-                                Practitioner 1’s Dashboard
+                                {practitioner && `${practitioner.firstName}'s Home Page`}
                             </Text>
                             <Text
                                 className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[3px] md:ml-[0] ml-[320px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"

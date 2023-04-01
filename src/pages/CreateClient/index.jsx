@@ -1,10 +1,37 @@
 import React from "react";
-
+import { useState } from "react";
 import { Img, Text, Input, Button } from "components";
 import { useNavigate } from "react-router-dom";
+import { axiosClient } from "constants/constants";
 
 const CreateClientPage = () => {
   const navigate = useNavigate();
+  const [kidsAbilityId, setKidsAbilityId] = useState("");
+
+  const handleSubmit = () => {
+    const url = encodeURI("/client");
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    axiosClient.post(url, {
+      kidsAbilityId: kidsAbilityId
+    }, {
+      headers: {
+        sessionToken: sessionToken
+      }
+    })
+    .then(_ => {
+      alert(`${kidsAbilityId} has been added`);
+      navigate(-1);
+    })
+    .catch(err => {
+      if(err.response.status === 400) {
+        alert(`Unable to create ${kidsAbilityId}, ${kidsAbilityId} already exists.`);
+      }
+      else {
+        alert(`Unable to create ${kidsAbilityId}`)
+      }
+      setKidsAbilityId("");
+    })
+  }
 
   return (
     <>
@@ -37,20 +64,32 @@ const CreateClientPage = () => {
             as="h4"
             variant="h4"
           >
-            Please enter the unique KidsAbility ID of the child to be added:
+           KidsAbility ID of the client to be added:
           </Text>
           <Input
             wrapClassName="bg-white_A700 mt-[23px] outline outline-[2px] outline-black_900 pb-[2px] pl-[20px] pr-[35px] pt-[7px] w-[57%]"
             className="font-normal leading-[normal] md:text-[22px] not-italic p-[0] placeholder:bg-white_A700 placeholder:text-black_900 sm:pr-[20px] sm:text-[20px] text-[24px] text-black_900 text-center w-[100%]"
             name="group190"
-            placeholder="ID Input Box"
+            placeholder="KidsAbility ID"
+            value={kidsAbilityId}
+            onChange={(e) => setKidsAbilityId(e.target.value)}
           ></Input>
-          <Button
-            className="common-pointer bg-blue_600 cursor-pointer font-normal leading-[normal] min-w-[254px] mt-[26px] not-italic py-[8px] rounded-[21px] text-[20px] text-black_900 text-center w-[auto]"
-            onClick={() => navigate("/passwordrequestedpage")}
-          >
-            Submit
-          </Button>
+          {kidsAbilityId.length > 0 ?
+            <Button
+              className="common-pointer bg-blue_600 cursor-pointer font-normal leading-[normal] min-w-[254px] mt-[26px] not-italic py-[8px] rounded-[21px] text-[20px] text-black_900 text-center w-[auto]"
+              onClick={handleSubmit}
+             >
+              Submit
+            </Button> 
+              :
+              <Button
+              className="common-pointer bg-blue_600 cursor-pointer font-normal leading-[normal] min-w-[254px] mt-[26px] not-italic py-[8px] rounded-[21px] text-[20px] text-black_900 text-center w-[auto]"
+              disabled
+             >
+              Submit
+            </Button> 
+          }
+          
         </div>
       </div>
     </>

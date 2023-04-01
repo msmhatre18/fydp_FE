@@ -46,11 +46,6 @@ const SessionViewProgramTemplatePage = () => {
                   Logout
                 </Text>
               </div>
-              <Img
-                src="images/img_scrollbar.svg"
-                className="h-[373px] w-[auto]"
-                alt="scrollbar"
-              />
             </div>
             <Button className="bg-red_A700 cursor-pointer font-normal leading-[normal] mb-[93px] min-w-[195px] ml-[-3px] mr-[20px] mt-[auto] not-italic py-[3px] rounded-[16px] text-[20px] text-center text-white_A700 w-[auto] z-[1]">
               Finish and Save

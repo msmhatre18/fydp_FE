@@ -38,7 +38,9 @@ const HomepagepatientsPage = () => {
   else {
     clientRows = (
           <>
-            {clients.map(client => <ClientRow key={client.kidsAbilityId} kidsAbilityId={client.kidsAbilityId} className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />)}
+            {[...clients]
+              .sort((a, b) => a.kidsAbilityId.localeCompare(b.kidsAbilityId))
+              .map(client => <ClientRow key={client.kidsAbilityId} kidsAbilityId={client.kidsAbilityId} className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]" />)}
           </>
     );
   }
@@ -73,9 +75,13 @@ const HomepagepatientsPage = () => {
          {clientRows}
         </div>
 
-        <div className="flex md:flex-col flex-row md:gap-[20px] items-center justify-center mt-[15px] md:w-[100%] w-[96%]">
-            <Button className="bg-transparent cursor-pointer font-normal leading-[normal] min-w-[47px] md:ml-[0] ml-[36px] not-italic sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[auto]">
-              Add
+        <div className="flex md:flex-col flex-row md:gap-[20px] items-left justify-left mt-[15px] md:w-[100%] w-[80%]">
+            <Button
+              style={{fontWeight: "bold"}} 
+              className="bg-transparent cursor-pointer font-normal leading-[normal] min-w-[47px] md:ml-[0] ml-[36px] not-italic sm:text-[20px] md:text-[22px] text-[24px] text-black_900 text-center w-[auto]"
+              onClick={() => navigate("/addclienttopractitioner", {state:{clients: clients}})}
+            >
+              Add Client
             </Button>
         </div>
       </div>

@@ -1,10 +1,59 @@
 import React from "react";
-
-import { Img, Text, SelectBox, List, Line } from "components";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Img, Text, SelectBox, List, Line, Button } from "components";
+import ClientRow from "components/ClientRow";
+import { useNavigate, useLocation } from "react-router-dom";
+import { axiosClient } from "constants/constants";
 
 const AddClienttoPractitionerPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [associatedClients, setAssocitatedClients] = useState(() => {
+    return new Set(location.state
+      .clients
+      .map(client => client.kidsAbilityId)
+    )
+  });
+  const [clients, setClients] = useState(new Array());
+
+  useEffect(() => {
+    const url = encodeURI("/client");
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    axiosClient.get(url, {
+      headers: {
+        sessionToken: sessionToken
+      }
+    })
+      .then((res) => {
+        setClients(
+            res.data
+              .filter(client => !associatedClients.has(client.kidsAbilityId))
+              .map(client => client.kidsAbilityId)
+        );
+
+      });
+  }, [associatedClients])
+
+  const handleAddClient = (kidsAbilityId) => {
+    const url = encodeURI("/practitioner/client");
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    console.log("in handle add client");
+    axiosClient.post(url,{
+      kidsAbilityId: kidsAbilityId
+    }, {
+      headers: {
+        sessionToken: sessionToken
+      }
+    }).then(_ => alert(`${kidsAbilityId} has been added`));
+    let associatedClientsCopy = new Set([...associatedClients]);
+    associatedClientsCopy.add(kidsAbilityId);
+    setAssocitatedClients(associatedClientsCopy);
+  }
+
+  let clientRows = [...clients]
+    .sort((a, b) => a.localeCompare(b))
+    .map(client => <ClientRow key={client} kidsAbilityId={client} addClientButton={true} handleAddClient={handleAddClient} />)
+
 
   return (
     <>
@@ -32,17 +81,17 @@ const AddClienttoPractitionerPage = () => {
               Logout
             </Text>
           </div>
-          <div className="flex md:flex-col flex-row gap-[15px] items-start justify-start md:w-[100%] w-[85%]">
-            <div className="flex flex-col items-center justify-start md:w-[100%] w-[98%]">
-              <SelectBox
-                className="bg-cover bg-no-repeat h-[56px] p-[10px] w-[100%]"
-                style={{ backgroundImage: "url('images/img_group58.svg')" }}
-                placeholderClassName=""
-                name="column"
-                placeholder=""
-                isSearchable={true}
-                isMulti={false}
-              ></SelectBox>
+          <div className="flex md:flex-col flex-row gap-[17px] items-start justify-between w-[100%]">
+            <div className="flex md:flex-1 flex-col items-start justify-start md:w-[100%] w-[auto]">
+              <List
+                className="flex-col gap-[1px] grid items-center w-[100%]"
+                orientation="vertical"
+              >
+                {clientRows}
+              </List>
+              <Button style={{ fontSize: "1.5em", fontWeight: "bold", marginTop: "30px" }} className="create-button" onClick={() => navigate("/createclient")}>
+                Create New Client
+              </Button>
             </div>
           </div>
         </div>

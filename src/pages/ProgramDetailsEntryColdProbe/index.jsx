@@ -1,11 +1,40 @@
 import React from "react";
+import { useState } from "react";
 import './../../styles/input.css';
 import './../../styles/DataCollection.css';
 import { Img, Text, Input, Button } from "components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ProgramDetailsEntryColdProbePage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [coldProbeData, setColdProbeData] = useState(() => {
+    return {
+      child: "",
+      code: "",
+      taskName: "",
+      objective: "",
+      example: "",
+      sd: "",
+      criteria: "",
+      criterionToMastery: ""
+    }
+  });
+
+  const handleSubmit = () => {
+    const prevState = location.state;
+    const nextState = {
+      name: prevState.programName,
+      kidsAbilityId: prevState.kidsAbilityId,
+      programTemplate: {
+        name: prevState.programTemplate.name
+      },
+      coldProbeSheet: {...coldProbeData}
+    };
+    navigate("/programdetailsentrycoldprobetargets", {state: nextState});
+  }
+
+
 
   return (
     <>
@@ -35,12 +64,16 @@ const ProgramDetailsEntryColdProbePage = () => {
                     className="input"
                     name="groupFortyOne"
                     placeholder="Child"
+                    value={coldProbeData.child}
+                    onChange={(e) => setColdProbeData({...coldProbeData, child: e.target.value})}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
                     className="input"
                     name="groupFortyTwo"
                     placeholder="Code"
+                    value={coldProbeData.code}
+                    onChange={(e) => setColdProbeData({...coldProbeData, code: e.target.value})}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
@@ -48,6 +81,8 @@ const ProgramDetailsEntryColdProbePage = () => {
                     type="text"
                     name="groupFortyThree"
                     placeholder="Task Name"
+                    value={coldProbeData.taskName}
+                    onChange={(e) => setColdProbeData({...coldProbeData, taskName: e.target.value})}
                   ></Input>
                 </div>
                 <div className="data-collection" style={{ display: 'flex', gap: '20px' }} >
@@ -57,6 +92,8 @@ const ProgramDetailsEntryColdProbePage = () => {
                     name="objective"
                     placeholder="Objective"
                     style={{ marginRight: '50px', padding: '20px' }}
+                    value={coldProbeData.objective}
+                    onChange={(e) => setColdProbeData({...coldProbeData, objective: e.target.value})}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
@@ -64,6 +101,8 @@ const ProgramDetailsEntryColdProbePage = () => {
                     name="example"
                     placeholder="Example"
                     style={{ marginRight: '50px', padding: '20px' }}
+                    value={coldProbeData.example}
+                    onChange={(e) => setColdProbeData({...coldProbeData, example: e.target.value})}
                   ></Input>
                 </div>
                 <div className="data-collection" style={{ display: 'flex', gap: '20px' }}>
@@ -73,6 +112,8 @@ const ProgramDetailsEntryColdProbePage = () => {
                     name="sd"
                     placeholder="SD"
                     type="textarea"
+                    value={coldProbeData.sd}
+                    onChange={(e) => setColdProbeData({...coldProbeData, sd: e.target.value})}
                   ></Input>
                   <Input
                     wrapClassName="input-big"
@@ -80,6 +121,17 @@ const ProgramDetailsEntryColdProbePage = () => {
                     name="criteria"
                     placeholder="Criteria"
                     type="textarea"
+                    value={coldProbeData.criteria}
+                    onChange={(e) => setColdProbeData({...coldProbeData, criteria: e.target.value})}
+                  ></Input>
+                   <Input
+                    wrapClassName="input-big"
+                    className="text-area"
+                    name="criterion to mastery"
+                    placeholder="Criterion To Mastery"
+                    type="textarea"
+                    value={coldProbeData.criterionToMastery}
+                    onChange={(e) => setColdProbeData({...coldProbeData, criterionToMastery: e.target.value})}
                   ></Input>
                 </div>
               </div>
@@ -96,9 +148,9 @@ const ProgramDetailsEntryColdProbePage = () => {
           </div>
           <Button
             className="replace-button" style={{ backgroundColor: 'lightgreen' }}
-            onClick={() => navigate("/programdetailsentrycoldprobetargets")}
+            onClick={handleSubmit}
           >
-            Finish
+            Add Targets
           </Button>
         </div>
       </div>

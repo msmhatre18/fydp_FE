@@ -14,11 +14,15 @@ function RadioButtons(props) {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
+    const state = {
+      programTemplate: props.programTemplate,
+      programName: props.programName,
+      kidsAbilityId: props.kidsAbilityId
+    };
     if (selectedValue === 'Cold Probe Collection') {
-      navigate('/ProgramDetailsEntryColdProbe');
+      navigate('/ProgramDetailsEntryColdProbe', {state: state});
     } else if (selectedValue === 'Mass Trial Collection') {
-      navigate('/ProgramDetailsEntryMassTrial');
+      navigate('/ProgramDetailsEntryMassTrial', {state: state});
     } 
   }
 
@@ -26,7 +30,7 @@ function RadioButtons(props) {
     <>
       <div className={`data-collection ${props.className}`} style={{ width: '450px' }}>
         <div className="radio-container">
-            <Text className="text-container" as="h4" variant="h4">
+            <Text style={{color: "black"}}className="text-container" as="h4" variant="h4">
                 Program Type:  
             </Text>
             <form onSubmit={handleFormSubmit}>
@@ -49,7 +53,7 @@ function RadioButtons(props) {
                     Mass Trial Collection
                 </label>
                 <Button className="replace-button" type="submit" style={{backgroundColor: 'lightgreen' }}>
-                    Go
+                    Continue
                 </Button>
             </form>
         </div>

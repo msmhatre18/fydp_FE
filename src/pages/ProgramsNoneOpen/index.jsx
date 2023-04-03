@@ -86,7 +86,7 @@ const ProgramsNoneOpenPage = () => {
               >
                 {programRows}
               </List>
-              <Button className="create-button" onClick={() => navigate("/programsdropdownopen")}>
+              <Button className="create-button" onClick={() => navigate("/programsdropdownopen", {state: {kidsAbilityId: kidsAbilityId}})}>
                 Create New Program
               </Button>
             </div>

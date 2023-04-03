@@ -1,11 +1,31 @@
 import React from "react";
-
+import { useState, useEffect } from "react";
 import { Img, Text, Button } from "components";
 import ProgamRow from "components/ProgamRow";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import { axiosClient } from "constants/constants";
 const ProgramsDropdownOpenPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [programTemplates, setProgramTemplates] = useState(null);
+
+  useEffect(() => {
+    const url = encodeURI("/program/template");
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    axiosClient.get(url, {
+      headers: {
+        sessionToken: sessionToken
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+        setProgramTemplates(res.data);
+      })
+  }
+  , []);
+  console.log("templates");
+  console.log(programTemplates);
+  if(programTemplates) console.log(programTemplates[0].name);
 
   return (
     <>
@@ -33,21 +53,13 @@ const ProgramsDropdownOpenPage = () => {
           </Text>
         </div>
         <div className="flex flex-col items-center justify-center mt-10 w-full md:flex-row md:gap-4 md:justify-between md:mt-20">
-        <ProgamRow
-            target = "Program 1"
-            className= "flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]"
-            onClick={() => navigate("/sessionviewprogramtemplate")}
-          />
-        <ProgamRow
-            target = "Program 2"
-            className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]"
-            onClick={() => navigate("/sessionviewprogramtemplate")}
-        />
-        <ProgamRow
-            target = "Program 3"
-            className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]"
-            onClick={() => navigate("/sessionviewprogramtemplate")}
-          />
+          {programTemplates &&
+             programTemplates.map(programTemplate => <ProgamRow
+              kidsAbilityId={location.state.kidsAbilityId}
+              programTemplate={programTemplate}
+              className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]"
+              onClick={() => navigate("/sessionviewprogramtemplate")}
+            />)}
         </div>
       </div>
     </>

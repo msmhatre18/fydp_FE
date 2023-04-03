@@ -2,10 +2,13 @@ import React from "react";
 import './../../styles/input.css';
 import { Img, Text, Input } from "components";
 import RadioButtonNew from "components/RadioButtonNew";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 const ProgramDetailsEntryPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [programTemplate, setProgramTemplate] = useState(() => location.state.programTemplate);
+  const [programName, setProgramName] = useState("");
 
   return (
     <>
@@ -24,7 +27,7 @@ const ProgramDetailsEntryPage = () => {
                 as="h2"
                 variant="h2"
               >
-                Program Name/ID 2
+                Program Details Form
               </Text>
             </div>
 
@@ -34,45 +37,16 @@ const ProgramDetailsEntryPage = () => {
                 wrapClassName="input-box"
                 className="input"
                 name="fieldCounter"
-                placeholder="Field 1"
+                placeholder="Program Name"
+                value={programName}
+                onChange={(e) => setProgramName(e.target.value)}
               ></Input>
-              <div className="flex md:flex-col flex-row gap-[35px] items-center justify-start mt-[43px] md:w-[100%] w-[71%]">
-                <Input
-                  wrapClassName="input-box"
-                  className="input"
-                  name="fieldCounter_One"
-                  placeholder="Field 2"
-                ></Input>
-                <Input
-                  wrapClassName="input-box"
-                  className="input"
-                  name="fieldCounter_Two"
-                  placeholder="Field 3"
-                ></Input>
-              </div>
-
-
-
-              <div className="bg-white_A700 flex h-[150px] items-center justify-start min-h-[] mt-[43px] outline outline-[2px] outline-black_900 p-[46px] sm:px-[20px] md:px-[40px] md:w-[100%] w-[920px]">
-                <Input
-                  wrapClassName="h-[150px] max-h-[250px] min-h-[100px] min-w-[920px] relative right-[45px]"
-                  className="input"
-                  name="fieldCounter_Three"
-                  placeholder="Field 4"
-                ></Input>
-              </div>
-
-              <div className="bg-white_A700 flex h-[150px] items-center justify-start min-h-[] mt-[43px] outline outline-[2px] outline-black_900 p-[46px] sm:px-[20px] md:px-[40px] md:w-[100%] w-[920px]">
-                <Input
-                  wrapClassName="h-[150px] max-h-[250px] min-h-[100px] min-w-[920px] relative right-[45px]"
-                  className="input"
-                  name="field_Four"
-                  placeholder="Field 5"
-                ></Input>
-              </div>
-
               
-              <RadioButtonNew className="flex flex-row items-start justify-start mt-[71px] md:w-[100%] w-[91%]" />
+              <RadioButtonNew
+                programName={programName}
+                programTemplate={programTemplate}
+                kidsAbilityId={location.state.kidsAbilityId}
+                className="flex flex-row items-start justify-start mt-[71px] md:w-[100%] w-[91%]" />
             </div>
           </div>
           <div className="flex md:flex-1 flex-col gap-[10px] justify-start md:w-[100%] w-[5%]">

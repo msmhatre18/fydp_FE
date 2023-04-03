@@ -65,6 +65,9 @@ const SessionViewProgramTemplate = React.lazy(() =>
 const BehaviourData = React.lazy(() => import("pages/BehaviourData"));
 const CreateClient = React.lazy(() => import("pages/CreateClient"));
 const LoginPage = React.lazy(() => import("pages/LoginPage"));
+
+const ProgramTemplatePreviewPage = React.lazy(() => import("pages/ProgramTemplatePreview"));
+
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<>Loading...</>}>
@@ -140,6 +143,10 @@ const ProjectRoutes = () => {
           <Route
             path="/programdetailsentrymasstrialtargets"
             element={<ProgramDetailsEntryMassTrialTargets />}
+          />
+          <Route
+            path="/programtemplatepreview"
+            element={<ProgramTemplatePreviewPage />}
           />
           <Route path="/dhiwise-dashboard" element={<Home />} />
         </Routes>

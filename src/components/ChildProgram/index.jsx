@@ -1,8 +1,19 @@
 import React from "react";
 import './../../styles/ProgramRow.css';
 import { Text, Button } from "components";
+import { useNavigate } from "react-router-dom";
 
 const ChildProgram = (props) => {
+  const navigate = useNavigate();
+
+  const handleViewHistory = () => {
+    navigate("/programhistorypageprogramtemplate", {state: {
+      programName: props.name,
+      programId: props.id,
+      kidsAbilityId: props.kidsAbilityId
+    }});
+  }
+
   return (
     <>
       <div className = {`program-row ${props.className}`}>
@@ -17,7 +28,7 @@ const ChildProgram = (props) => {
           <div className="flex md:flex-col flex-row items-start justify-center mb-[7px] md:mt-[2px] mt-[2px]">
             <div className="button-container">
               {!props.isMastered && <button className="create-button">Complete / Start Session</button>}
-              <button className="create-button">View History</button>
+              <button className="create-button" onClick={handleViewHistory}>View History</button>
             </div>
             <Text
               className="font-inter font-normal h-[35px] justify-center mb-[5px] md:mt-[0] mt-[2px] not-italic pb-[3px] pt-[6px] px-[4px] text-left text-white_A700 w-[185px]"

@@ -42,6 +42,8 @@ const ProgramsNoneOpenPage = () => {
         <ChildProgram
             className =  "bg-cover bg-no-repeat flex flex-1 flex-col h-[64px] items-center justify-end my-[0] p-[10px] w-[100%]"
             name = {program.name}
+            id = {program.id}
+            kidsAbilityId = {kidsAbilityId}
             key = {program.id}
             isMastered = {program.isMastered}
             embeddableProgramTemplateLink = {program.embeddableProgramTemplateLink}

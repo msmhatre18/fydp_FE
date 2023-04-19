@@ -1,10 +1,29 @@
 import React from "react";
-
+import { useState, useEffect } from "react";
 import { Img, Text } from "components";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import { axiosClient } from "constants/constants";
 const ProgramHistoryPageProgramTemplatePage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [excelLink, setExcelLink] = useState(null);
+  useEffect(() => {
+    const url = encodeURI(`/program/${location.state.programId}/history`);
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    axiosClient.get(url, {
+      headers: {
+        sessionToken: sessionToken
+      }
+    })
+    .then((res) => {
+      console.log(res);
+      setExcelLink(res.data.embeddableExcelLink);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }, []);
+
 
   return (
     <>
@@ -22,7 +41,7 @@ const ProgramHistoryPageProgramTemplatePage = () => {
               as="h3"
               variant="h3"
             >
-              Program Name/ID for Child ID
+              {`${location.state.programName} for ${location.state.kidsAbilityId}`}
             </Text>
             <Text
               className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[16px] md:ml-[0] ml-[276px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
@@ -33,22 +52,11 @@ const ProgramHistoryPageProgramTemplatePage = () => {
             </Text>
           </div>
           <div className="bg-bluegray_100 flex flex-col gap-[158px] md:gap-[40px] items-center justify-end p-[68px] sm:px-[20px] md:px-[40px] w-[100%]">
-            <div className="flex flex-col gap-[52px] items-start justify-start mt-[247px] md:w-[100%] w-[auto]">
-              <Text
-                className="not-italic text-black_900 text-left w-[auto]"
-                as="h3"
-                variant="h3"
-              >
-                Past Session History 1 for Program
-              </Text>
-              <Text
-                className="not-italic text-black_900 text-left w-[auto]"
-                as="h4"
-                variant="h4"
-              >
-                Embed link for program template word doc
-              </Text>
-            </div>
+            {/* <div className="flex flex-col gap-[52px] items-start justify-start mt-[247px] md:w-[100%] w-[auto]">
+              
+               
+            </div> */}
+            {excelLink && <iframe src={excelLink} width='100%' height='650px' frameborder='0'></iframe>}
             <Img
               src="images/img_arrow14_black_900.svg"
               className="h-[1px] w-[auto]"

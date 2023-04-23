@@ -27,7 +27,7 @@ const NewPasswordPage = () => {
             <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[15px] w-[100%]">
                 <div className="flex flex-col gap-[56px] items-center justify-start max-w-[1103px] mb-[103px] mt-[2px] mx-[auto] md:px-[20px] w-[100%]">
                     <div className="flex flex-col gap-[56px] items-center justify-start w-[100%]">
-                        <div className="data-collection">
+                        <div className="data-collection"  style={{ display: 'flex', gap: '25px'}}>
                             <Img
                                 src="images/img_arrowup.svg"
                                 className="common-pointer h-[33px] md:mt-[0] mt-[3px] w-[auto]"

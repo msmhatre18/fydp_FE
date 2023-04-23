@@ -14,16 +14,17 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
+    padding: 2em 3em;
   }
 
   .text-container h4 {
-    font-size: 18px;
+    font-size: 1.125rem; /* equivalent to 18px */
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
+
 
 .radio-buttons {
   display: flex;

@@ -5,6 +5,9 @@ import './../../styles/DataCollection.css';
 import './../../styles/input.css';
 import { useNavigate } from "react-router-dom";
 import { axiosClient } from "constants/constants";
+import LogoutButton from "components/Logout";
+
+
 const NewPasswordPage = () => {
     const navigate = useNavigate();
     const [password, setPassword] = useState("");

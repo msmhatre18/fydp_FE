@@ -5,7 +5,7 @@ import { Text, Button, Img } from "components";
 import { useNavigate } from "react-router-dom";
 import { axiosClient } from "constants/constants";
 import './../../styles/DataCollection.css';
-
+import LogoutButton from "components/Logout";
 
 const HomepagepatientsPage = () => {
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ const HomepagepatientsPage = () => {
   return (
     <>
       <div className="bg-white_A700 flex flex-col font-inter gap-[12px] items-center justify-end mx-[auto] pt-[11px] w-[100%]">
-        <div className="data-collection" style={{ display: 'flex', gap: '25px'}}>
+        <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
           <Img
             src="images/img_arrowup.svg"
             className="h-[33px] md:mt-[0] mt-[3px] w-[auto]"
@@ -64,20 +64,16 @@ const HomepagepatientsPage = () => {
           >
             Clients
           </Text>
-          <Text
-            className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[3px] md:ml-[0] ml-[320px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-            variant="body2"
-            onClick={() => navigate("/")}
-          >
-            Logout
-          </Text>
+          <div className="flex justify-end">
+            <LogoutButton />
+          </div>
         </div>
 
         <div className="flex flex-col items-center justify-center mt-10 w-full md:flex-row md:gap-4 md:justify-between md:mt-20">
           {clientRows}
         </div>
 
-        <div className=""  style={{ display: 'flex', gap: '50px', justifyContent: 'center' }}>
+        <div className="" style={{ display: 'flex', gap: '50px', justifyContent: 'center' }}>
           <Button
             style={{ fontWeight: "bold" }}
             className="replace-button"

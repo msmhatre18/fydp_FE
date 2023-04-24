@@ -4,6 +4,8 @@ import { Img, Text, Button } from "components";
 import ProgamRow from "components/ProgamRow";
 import { useNavigate, useLocation } from "react-router-dom";
 import { axiosClient } from "constants/constants";
+import LogoutButton from "components/Logout";
+
 const ProgramsDropdownOpenPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,10 +24,10 @@ const ProgramsDropdownOpenPage = () => {
         setProgramTemplates(res.data);
       })
   }
-  , []);
+    , []);
   console.log("templates");
   console.log(programTemplates);
-  if(programTemplates) console.log(programTemplates[0].name);
+  if (programTemplates) console.log(programTemplates[0].name);
 
   return (
     <>
@@ -44,17 +46,13 @@ const ProgramsDropdownOpenPage = () => {
           >
             Program Templates
           </Text>
-          <Text
-            className="bg-white_A700 flex h-[40px] items-center justify-center mb-[12px] md:ml-[0] ml-[446px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-            variant="body2"
-            onClick={() => navigate("/")}
-          >
-            Logout
-          </Text>
+          <div className="flex justify-end">
+            <LogoutButton />
+          </div>
         </div>
         <div className="flex flex-col items-center justify-center mt-10 w-full md:flex-row md:gap-4 md:justify-between md:mt-20">
           {programTemplates &&
-             programTemplates.map(programTemplate => <ProgamRow
+            programTemplates.map(programTemplate => <ProgamRow
               kidsAbilityId={location.state.kidsAbilityId}
               programTemplate={programTemplate}
               className="flex flex-row items-end justify-start md:ml-[0] ml-[7px] mt-[40px] md:w-[100%] w-[78%]"

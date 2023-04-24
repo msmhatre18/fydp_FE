@@ -4,6 +4,9 @@ import { Img, Text, SelectBox, List, Line, Button } from "components";
 import ClientRow from "components/ClientRow";
 import { useNavigate, useLocation } from "react-router-dom";
 import { axiosClient } from "constants/constants";
+import './../../styles/DataCollection.css';
+import LogoutButton from "components/Logout";
+
 
 const AddClienttoPractitionerPage = () => {
   const navigate = useNavigate();
@@ -26,9 +29,9 @@ const AddClienttoPractitionerPage = () => {
     })
       .then((res) => {
         setClients(
-            res.data
-              .filter(client => !associatedClients.has(client.kidsAbilityId))
-              .map(client => client.kidsAbilityId)
+          res.data
+            .filter(client => !associatedClients.has(client.kidsAbilityId))
+            .map(client => client.kidsAbilityId)
         );
 
       });
@@ -38,7 +41,7 @@ const AddClienttoPractitionerPage = () => {
     const url = encodeURI("/practitioner/client");
     const sessionToken = sessionStorage.getItem("sessionToken");
     console.log("in handle add client");
-    axiosClient.post(url,{
+    axiosClient.post(url, {
       kidsAbilityId: kidsAbilityId
     }, {
       headers: {
@@ -73,13 +76,9 @@ const AddClienttoPractitionerPage = () => {
             >
               Add Client to Practitioner
             </Text>
-            <Text
-              className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[33px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-              onClick={() => navigate("/")}
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
           <div className="flex md:flex-col flex-row gap-[17px] items-start justify-between w-[100%]">
             <div className="flex md:flex-1 flex-col items-start justify-start md:w-[100%] w-[auto]">

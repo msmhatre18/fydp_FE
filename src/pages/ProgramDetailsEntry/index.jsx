@@ -4,6 +4,9 @@ import { Img, Text, Input } from "components";
 import RadioButtonNew from "components/RadioButtonNew";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import LogoutButton from "components/Logout";
+
+
 const ProgramDetailsEntryPage = () => {
   const navigate = useNavigate();
   const location = useLocation();

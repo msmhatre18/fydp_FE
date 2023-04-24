@@ -5,6 +5,7 @@ import ChildProgram from "components/ChildProgram";
 import { axiosClient } from "constants/constants";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import LogoutButton from "components/Logout";
 
 const ProgramsNoneOpenPage = () => {
   const navigate = useNavigate();
@@ -16,10 +17,10 @@ const ProgramsNoneOpenPage = () => {
     const sessionToken = sessionStorage.getItem("sessionToken");
     const uri = encodeURI(`/practitioner/client/${kidsAbilityId}/program`);
     axiosClient.get(uri, {
-        headers: {
+      headers: {
         'sessionToken': sessionToken,
       }
-        })
+    })
       .then(res => {
         console.log(res);
         setPrograms(res.data);
@@ -30,29 +31,29 @@ const ProgramsNoneOpenPage = () => {
   }, []);
 
   let programRows;
-  if(programs) {
+  if (programs) {
     programRows = (
       [...programs]
-      .sort((a, b) => {
-        if((a.isMastered && b.isMastered) || (!a.isMastered && !b.isMastered)) return a.name.localeCompare(b.name);
-        else if(!a.isMastered) return a;
-        else return b;
-      })
-      .map(program => (
-        <ChildProgram
-            className =  "bg-cover bg-no-repeat flex flex-1 flex-col h-[64px] items-center justify-end my-[0] p-[10px] w-[100%]"
-            name = {program.name}
-            id = {program.id}
-            kidsAbilityId = {kidsAbilityId}
-            key = {program.id}
-            isMastered = {program.isMastered}
-            embeddableProgramTemplateLink = {program.embeddableProgramTemplateLink}
+        .sort((a, b) => {
+          if ((a.isMastered && b.isMastered) || (!a.isMastered && !b.isMastered)) return a.name.localeCompare(b.name);
+          else if (!a.isMastered) return a;
+          else return b;
+        })
+        .map(program => (
+          <ChildProgram
+            className="bg-cover bg-no-repeat flex flex-1 flex-col h-[64px] items-center justify-end my-[0] p-[10px] w-[100%]"
+            name={program.name}
+            id={program.id}
+            kidsAbilityId={kidsAbilityId}
+            key={program.id}
+            isMastered={program.isMastered}
+            embeddableProgramTemplateLink={program.embeddableProgramTemplateLink}
           />
-      ))
+        ))
     );
   }
   else programRows = <></>;
-  
+
 
   return (
     <>
@@ -70,15 +71,11 @@ const ProgramsNoneOpenPage = () => {
               as="h2"
               variant="h2"
             >
-              Programs for {kidsAbilityId}  
+              Programs for {kidsAbilityId}
             </Text>
-            <Text
-              className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[4px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-              onClick={() => navigate("/")}
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
           <div className="flex md:flex-col flex-row gap-[17px] items-start justify-between w-[100%]">
             <div className="flex md:flex-1 flex-col items-start justify-start md:w-[100%] w-[auto]">
@@ -88,7 +85,7 @@ const ProgramsNoneOpenPage = () => {
               >
                 {programRows}
               </List>
-              <Button className="create-button" onClick={() => navigate("/programsdropdownopen", {state: {kidsAbilityId: kidsAbilityId}})}>
+              <Button className="create-button" onClick={() => navigate("/programsdropdownopen", { state: { kidsAbilityId: kidsAbilityId } })}>
                 Create New Program
               </Button>
             </div>

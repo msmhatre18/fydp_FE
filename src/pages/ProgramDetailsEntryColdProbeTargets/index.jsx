@@ -5,6 +5,7 @@ import { Img, Text, List, Input, Button } from "components";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { axiosClient } from "constants/constants";
+import LogoutButton from "components/Logout";
 
 const ProgramDetailsEntryColdProbeTargetsPage = () => {
   const navigate = useNavigate();
@@ -12,9 +13,9 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
   const [targets, setTargets] = useState(() => {
     let arr = [];
     let matrix = [];
-    for(let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       let curr = [];
-      for(let j = 0; j < 5; j++) {
+      for (let j = 0; j < 5; j++) {
         curr.push("");
       }
       matrix.push(curr);
@@ -35,8 +36,8 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
           className="input"
           name={`group ${idx * 25 + i * 5 + j + 1}`}
           placeholder={`target ${idx * 25 + i * 5 + j + 1}`}
-          value = {targets[idx][i][j]}
-          onChange = {(e) => {
+          value={targets[idx][i][j]}
+          onChange={(e) => {
             let copy = [...targets];
             copy[idx][i][j] = e.target.value;
             setTargets(copy);
@@ -47,9 +48,9 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
   ));
 
   const isFull = () => {
-    for(let i = 0; i < 5; i++) {
-      for(let j = 0; j < 5; j++) {
-        if(targets[idx][i][j].length == 0) return false;
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        if (targets[idx][i][j].length == 0) return false;
       }
     }
     return true;
@@ -58,9 +59,9 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
   const handleAddMoreTargets = () => {
     let copy = [...targets];
     let matrix = [];
-    for(let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       let curr = [];
-      for(let j = 0; j < 5; j++) {
+      for (let j = 0; j < 5; j++) {
         curr.push("");
       }
       matrix.push(curr);
@@ -78,12 +79,12 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
     };
     delete body.kidsAbilityId;
     let coldProbeSheetItems = [];
-    for(let i = 0; i <= idx; i++) {
-      for(let j = 0; j < 5; j++) {
-        for(let k = 0; k < 5; k++) {
-          if(targets[i][j][k].length != 0) {
-            coldProbeSheetItems.push({targetName: targets[i][j][k]});
-          } 
+    for (let i = 0; i <= idx; i++) {
+      for (let j = 0; j < 5; j++) {
+        for (let k = 0; k < 5; k++) {
+          if (targets[i][j][k].length != 0) {
+            coldProbeSheetItems.push({ targetName: targets[i][j][k] });
+          }
         }
       }
     }
@@ -93,21 +94,27 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
     const url = encodeURI(`/practitioner/client/${kidsAbilityId}/program`)
     const sessionToken = sessionStorage.getItem("sessionToken");
 
-    axiosClient.post(url, body, {headers: {
-      sessionToken: sessionToken
-    }})
-    .then((_) => {
-      alert(`Program: ${body.name} has been successfully created.`);
-      navigate("/programsnoneopen", {state: {
-        kidsAbilityId: kidsAbilityId
-      }});
+    axiosClient.post(url, body, {
+      headers: {
+        sessionToken: sessionToken
+      }
     })
-    .catch(_ => {
-      alert("unable to create the program at this time");
-      navigate("/programsnoneopen", {state: {
-        kidsAbilityId: kidsAbilityId
-      }});
-    } )
+      .then((_) => {
+        alert(`Program: ${body.name} has been successfully created.`);
+        navigate("/programsnoneopen", {
+          state: {
+            kidsAbilityId: kidsAbilityId
+          }
+        });
+      })
+      .catch(_ => {
+        alert("unable to create the program at this time");
+        navigate("/programsnoneopen", {
+          state: {
+            kidsAbilityId: kidsAbilityId
+          }
+        });
+      })
   }
 
 
@@ -129,13 +136,9 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
             >
               Program Name (Cold Probe)
             </Text>
-            <Text
-              className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[12px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-              onClick={() => navigate("/")}
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
           <Text
             className="text-collection text-center"
@@ -151,13 +154,13 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
               </List>
             </div>
             {isFull() &&
-              <Button style={{fontWeight: 'bold'}} onClick = {handleAddMoreTargets}>
-                 Add More Targets
+              <Button style={{ fontWeight: 'bold' }} onClick={handleAddMoreTargets}>
+                Add More Targets
               </Button>
-             }
-            
+            }
+
           </div>
-          
+
           <Button className="replace-button" style={{ backgroundColor: 'lightgreen' }} onClick={handleSubmit}>
             Finish
           </Button>

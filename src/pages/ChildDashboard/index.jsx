@@ -1,5 +1,5 @@
 import React from "react";
-
+import LogoutButton from "components/Logout";
 import { Img, Text, Button } from "components";
 import BehaviorDashData from "components/BehaviorDashData";
 import ProgramsDashData from "components/ProgramsDashData";
@@ -25,19 +25,15 @@ const ChildDashboardPage = () => {
                 as="h2"
                 variant="h2"
               >
-                Child 1’s Dashboard 
+                Child 1’s Dashboard
               </Text>
-              <Text
-                className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[3px] md:ml-[0] ml-[320px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-                variant="body2"
-                onClick={() => navigate("/")}
-              >
-                Logout
-              </Text>
+              <div className="flex justify-end">
+                <LogoutButton />
+              </div>
             </div>
             <div className="flex md:flex-col flex-row md:gap-[40px] items-center justify-between md:w-[100%] w-[72%]">
-              <BehaviorDashData target = "Child 1" className="bg-bluegray_100 flex flex-col items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[auto]" />
-              <ProgramsDashData target = "Child 1" className="bg-bluegray_100 flex flex-col items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[auto]" />
+              <BehaviorDashData target="Child 1" className="bg-bluegray_100 flex flex-col items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[auto]" />
+              <ProgramsDashData target="Child 1" className="bg-bluegray_100 flex flex-col items-center justify-end p-[28px] sm:px-[20px] md:w-[100%] w-[auto]" />
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import './../../styles/input.css';
 import './../../styles/DataCollection.css';
 import { Img, Text, Input, Button } from "components";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "components/Logout";
 
 const ProgramDetailsEntryMassTrialPage = () => {
   const navigate = useNavigate();
@@ -85,13 +86,9 @@ const ProgramDetailsEntryMassTrialPage = () => {
               </div>
             </div>
             <div className="flex md:flex-1 flex-col gap-[10px] justify-start md:w-[100%] w-[5%]">
-              <Text
-                className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center md:ml-[0] ml-[12px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-                variant="body2"
-                onClick={() => navigate("/")}
-              >
-                Logout
-              </Text>
+              <div className="flex justify-end">
+                <LogoutButton />
+              </div>
             </div>
           </div>
           <Button

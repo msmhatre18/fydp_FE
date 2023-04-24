@@ -3,6 +3,7 @@ import './../../styles/input.css';
 import './../../styles/DataCollection.css';
 import { Img, Text, List, Input, Button } from "components";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "components/Logout";
 
 const ProgramDetailsEntryMassTrialTargetsPage = () => {
   const navigate = useNavigate();
@@ -25,13 +26,9 @@ const ProgramDetailsEntryMassTrialTargetsPage = () => {
             >
               Program Name (Mass Trial)
             </Text>
-            <Text
-              className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[12px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-              onClick={() => navigate("/")}
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
           <Text
             className="text-collection text-center"

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Img, Text } from "components";
 import { useNavigate, useLocation } from "react-router-dom";
 import { axiosClient } from "constants/constants";
+import LogoutButton from "components/Logout";
+
 const ProgramHistoryPageProgramTemplatePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,13 +17,13 @@ const ProgramHistoryPageProgramTemplatePage = () => {
         sessionToken: sessionToken
       }
     })
-    .then((res) => {
-      console.log(res);
-      setExcelLink(res.data.embeddableExcelLink);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+      .then((res) => {
+        console.log(res);
+        setExcelLink(res.data.embeddableExcelLink);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }, []);
 
 
@@ -43,13 +45,9 @@ const ProgramHistoryPageProgramTemplatePage = () => {
             >
               {`${location.state.programName} for ${location.state.kidsAbilityId}`}
             </Text>
-            <Text
-              className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[16px] md:ml-[0] ml-[276px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-              onClick={() => navigate("/")}
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
           <div className="bg-bluegray_100 flex flex-col gap-[158px] md:gap-[40px] items-center justify-end p-[68px] sm:px-[20px] md:px-[40px] w-[100%]">
             {/* <div className="flex flex-col gap-[52px] items-start justify-start mt-[247px] md:w-[100%] w-[auto]">

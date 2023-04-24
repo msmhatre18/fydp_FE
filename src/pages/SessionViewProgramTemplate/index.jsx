@@ -1,5 +1,5 @@
 import React from "react";
-
+import LogoutButton from "components/Logout";
 import { Text, Img, Button } from "components";
 import { useNavigate } from "react-router-dom";
 
@@ -38,13 +38,9 @@ const SessionViewProgramTemplatePage = () => {
                   onClick={() => navigate(-1)}
                   alt="arrowup"
                 />
-                <Text
-                  className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-                  variant="body2"
-                  onClick={() => navigate("/")}
-                >
-                  Logout
-                </Text>
+                <div className="flex justify-end">
+                  <LogoutButton />
+                </div>
               </div>
             </div>
             <Button className="bg-red_A700 cursor-pointer font-normal leading-[normal] mb-[93px] min-w-[195px] ml-[-3px] mr-[20px] mt-[auto] not-italic py-[3px] rounded-[16px] text-[20px] text-center text-white_A700 w-[auto] z-[1]">

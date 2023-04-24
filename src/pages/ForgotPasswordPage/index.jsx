@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Text, Input, Button } from "components";
 import { useNavigate } from "react-router-dom";
 import { axiosClient } from "constants/constants";
+import './../../styles/DataCollection.css';
+
 
 const ForgotPasswordPagePage = () => {
   const navigate = useNavigate();

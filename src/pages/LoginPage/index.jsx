@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import './../../styles/DataCollection.css';
 import './../../styles/input.css';
+import myImage from './../../assets/images/k_scope.png';
+
 
 const LoginPagePage = () => {
   const navigate = useNavigate();
@@ -45,15 +47,10 @@ const LoginPagePage = () => {
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div className="bg-white_A700 flex flex-col font-inter gap-[9px] items-center justify-start p-[250px] sm:px-[20px] md:px-[40px] w-[100%]">
-          <Text
-            className="not-italic text-black_900 text-left w-[auto]"
-            as="h1"
-            variant="h1"
-          >
-            Digitizing KidsAbility
-          </Text>
+        <div className="" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <img src={myImage} alt="My Image" style={{ margin: '0 auto', maxWidth: '100%', display: 'block', marginLeft: '5em' }} />
           <div className="data-container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+
             <Input
               wrapClassName="outline outline-[2px] outline-black_900 pl-[11px] pr-[35px] py-[8px] shadow-bs w-[100%]"
               className="input-box"

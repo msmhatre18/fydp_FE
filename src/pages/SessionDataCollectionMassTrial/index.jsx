@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Text, Img, Datepicker, Input, Button } from "components";
 import DataCollection from "components/DataCollection";
+import LogoutButton from "components/Logout";
 
 const SessionDataCollectionMassTrialPage = () => {
   const navigate = useNavigate();
@@ -29,13 +30,9 @@ const SessionDataCollectionMassTrialPage = () => {
               onClick={() => navigate(-1)}
               alt="arrowup"
             />
-            <Text
-              className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[9px] md:ml-[0] ml-[7px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-              onClick={() => navigate("/")}
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
           <div className="flex md:flex-col flex-row gap-[35px] items-start justify-start md:w-[100%] w-[92%]">
             <div className="flex flex-col justify-start md:mt-[0] mt-[40px] md:w-[100%] w-[96%]">

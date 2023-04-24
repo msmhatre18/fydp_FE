@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Text, Img, Input } from "components";
 import { useNavigate } from "react-router-dom";
-
+import LogoutButton from "components/Logout";
 
 import './../../styles/table.css';
 
@@ -105,17 +105,13 @@ const SessionBehaviouralDataPage = () => {
           alt="arrowup"
         />
         <Text className="title">Session Behavioural Data</Text>
-        <Text
-          className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[9px] md:ml-[0] ml-[7px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-          variant="body2"
-          onClick={() => navigate("/")}
-        >
-          Logout
-        </Text>
-        
+        <div className="flex justify-end">
+          <LogoutButton />
+        </div>
+
       </div>
       <div className="table-container">
-        
+
         <BehaviorsTable
           behaviors={behaviors}
           handleIncrement={handleIncrement}

@@ -1,4 +1,5 @@
 import React from "react";
+import LogoutButton from "components/Logout";
 
 import { Img, Text } from "components";
 
@@ -20,12 +21,9 @@ const BehaviorDataHistoryPage = () => {
             >
               Behavior Data for Child 1
             </Text>
-            <Text
-              className="bg-white_A700 flex h-[40px] items-center justify-center mb-[13px] md:ml-[0] ml-[351px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
           <div className="bg-bluegray_100 flex flex-col gap-[54px] items-center justify-end p-[227px] sm:px-[20px] md:px-[40px] w-[100%]">
             <Text

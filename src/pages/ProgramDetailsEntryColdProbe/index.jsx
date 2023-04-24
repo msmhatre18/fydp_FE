@@ -4,6 +4,7 @@ import './../../styles/input.css';
 import './../../styles/DataCollection.css';
 import { Img, Text, Input, Button } from "components";
 import { useNavigate, useLocation } from "react-router-dom";
+import LogoutButton from "components/Logout";
 
 const ProgramDetailsEntryColdProbePage = () => {
   const navigate = useNavigate();
@@ -29,9 +30,9 @@ const ProgramDetailsEntryColdProbePage = () => {
       programTemplate: {
         name: prevState.programTemplate.name
       },
-      coldProbeSheet: {...coldProbeData}
+      coldProbeSheet: { ...coldProbeData }
     };
-    navigate("/programdetailsentrycoldprobetargets", {state: nextState});
+    navigate("/programdetailsentrycoldprobetargets", { state: nextState });
   }
 
 
@@ -65,7 +66,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                     name="groupFortyOne"
                     placeholder="Child"
                     value={coldProbeData.child}
-                    onChange={(e) => setColdProbeData({...coldProbeData, child: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, child: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
@@ -73,7 +74,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                     name="groupFortyTwo"
                     placeholder="Code"
                     value={coldProbeData.code}
-                    onChange={(e) => setColdProbeData({...coldProbeData, code: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, code: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
@@ -82,7 +83,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                     name="groupFortyThree"
                     placeholder="Task Name"
                     value={coldProbeData.taskName}
-                    onChange={(e) => setColdProbeData({...coldProbeData, taskName: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, taskName: e.target.value })}
                   ></Input>
                 </div>
                 <div className="data-collection" style={{ display: 'flex', gap: '20px' }} >
@@ -93,7 +94,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                     placeholder="Objective"
                     style={{ marginRight: '50px', padding: '20px' }}
                     value={coldProbeData.objective}
-                    onChange={(e) => setColdProbeData({...coldProbeData, objective: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, objective: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
@@ -102,7 +103,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                     placeholder="Example"
                     style={{ marginRight: '50px', padding: '20px' }}
                     value={coldProbeData.example}
-                    onChange={(e) => setColdProbeData({...coldProbeData, example: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, example: e.target.value })}
                   ></Input>
                 </div>
                 <div className="data-collection" style={{ display: 'flex', gap: '20px' }}>
@@ -113,7 +114,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                     placeholder="SD"
                     type="textarea"
                     value={coldProbeData.sd}
-                    onChange={(e) => setColdProbeData({...coldProbeData, sd: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, sd: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-big"
@@ -122,28 +123,24 @@ const ProgramDetailsEntryColdProbePage = () => {
                     placeholder="Criteria"
                     type="textarea"
                     value={coldProbeData.criteria}
-                    onChange={(e) => setColdProbeData({...coldProbeData, criteria: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, criteria: e.target.value })}
                   ></Input>
-                   <Input
+                  <Input
                     wrapClassName="input-big"
                     className="text-area"
                     name="criterion to mastery"
                     placeholder="Criterion To Mastery"
                     type="textarea"
                     value={coldProbeData.criterionToMastery}
-                    onChange={(e) => setColdProbeData({...coldProbeData, criterionToMastery: e.target.value})}
+                    onChange={(e) => setColdProbeData({ ...coldProbeData, criterionToMastery: e.target.value })}
                   ></Input>
                 </div>
               </div>
             </div>
             <div className="flex md:flex-1 flex-col gap-[10px] justify-start md:w-[100%] w-[5%]">
-              <Text
-                className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center md:ml-[0] ml-[12px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-                variant="body2"
-                onClick={() => navigate("/")}
-              >
-                Logout
-              </Text>
+              <div className="flex justify-end">
+                <LogoutButton />
+              </div>
             </div>
           </div>
           <Button

@@ -5,6 +5,7 @@ import './../../styles/DataCollection.css';
 import './../../styles/input.css';
 import { useNavigate, useLocation } from "react-router-dom";
 import { axiosClient } from "constants/constants";
+import LogoutButton from "components/Logout";
 
 const CreatePractitionerPage = () => {
     const navigate = useNavigate();

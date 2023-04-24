@@ -22,7 +22,7 @@ const ProgramDetailsEntryPage = () => {
               <Img
                 src="images/img_arrowup.svg"
                 className="common-pointer h-[33px] mb-[2px] sm:mt-[0] mt-[8px] w-[auto]"
-                onClick={() => navigate("/homepagepatients")}
+                onClick={() => navigate(-1)}
                 alt="arrowup"
               />
               <Text
@@ -44,7 +44,7 @@ const ProgramDetailsEntryPage = () => {
                 value={programName}
                 onChange={(e) => setProgramName(e.target.value)}
               ></Input>
-              
+
               <RadioButtonNew
                 programName={programName}
                 programTemplate={programTemplate}
@@ -53,13 +53,9 @@ const ProgramDetailsEntryPage = () => {
             </div>
           </div>
           <div className="flex md:flex-1 flex-col gap-[10px] justify-start md:w-[100%] w-[5%]">
-            <Text
-              className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center md:ml-[0] ml-[12px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-              variant="body2"
-              onClick={() => navigate("/")}
-            >
-              Logout
-            </Text>
+            <div className="flex justify-end">
+              <LogoutButton />
+            </div>
           </div>
         </div>
       </div>

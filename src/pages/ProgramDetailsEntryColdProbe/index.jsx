@@ -47,7 +47,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                 <Img
                   src="images/img_arrowup.svg"
                   className="common-pointer h-[33px] mb-[2px] sm:mt-[0] mt-[8px] w-[auto]"
-                  onClick={() => navigate("/programdetailsentry")}
+                  onClick={() => navigate(-1)}
                   alt="arrowup"
                 />
                 <Text

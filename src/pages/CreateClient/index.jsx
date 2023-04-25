@@ -67,7 +67,7 @@ const CreateClientPage = () => {
           </Text>
           <Input
             wrapClassName="bg-white_A700 mt-[23px] outline outline-[2px] outline-black_900 pb-[2px] pl-[20px] pr-[35px] pt-[7px] w-[57%]"
-            className="font-normal leading-[normal] md:text-[22px] not-italic p-[0] placeholder:bg-white_A700 placeholder:text-black_900 sm:pr-[20px] sm:text-[20px] text-[24px] text-black_900 w-[100%]"
+            className="input-box"
             name="group190"
             placeholder="KidsAbility ID"
             value={kidsAbilityId}

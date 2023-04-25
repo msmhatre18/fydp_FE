@@ -5,7 +5,7 @@ import { Text, Button } from "components";
 
 function RadioButtons(props) {
   const navigate = useNavigate();
-  
+
   const [selectedValue, setSelectedValue] = useState('');
 
   const handleRadioChange = (event) => {
@@ -20,42 +20,42 @@ function RadioButtons(props) {
       kidsAbilityId: props.kidsAbilityId
     };
     if (selectedValue === 'Cold Probe Collection') {
-      navigate('/ProgramDetailsEntryColdProbe', {state: state});
+      navigate('/ProgramDetailsEntryColdProbe', { state: state });
     } else if (selectedValue === 'Mass Trial Collection') {
-      navigate('/ProgramDetailsEntryMassTrial', {state: state});
-    } 
+      navigate('/ProgramDetailsEntryMassTrial', { state: state });
+    }
   }
 
   return (
     <>
-      <div className={`data-collection ${props.className}`} style={{ width: '450px' }}>
+      <div className={`data-collection ${props.className}`} style={{ width: '550px' }}>
         <div className="radio-container">
-            <Text style={{color: "black"}}className="text-container" as="h4" variant="h4">
-                Program Type:  
-            </Text>
-            <form onSubmit={handleFormSubmit}>
-                <label className="radio-buttons">
-                    <input
-                        type="radio"
-                        value="Cold Probe Collection"
-                        checked={selectedValue === 'Cold Probe Collection'}
-                        onChange={handleRadioChange}
-                    />
-                    Cold Probe Collection
-                </label>
-                <label className="radio-buttons">
-                    <input
-                        type="radio"
-                        value="Mass Trial Collection"
-                        checked={selectedValue === 'Mass Trial Collection'}
-                        onChange={handleRadioChange}
-                    />
-                    Mass Trial Collection
-                </label>
-                <Button className="replace-button" type="submit" style={{backgroundColor: 'lightgreen' }}>
-                    Continue
-                </Button>
-            </form>
+          <Text style={{ color: "black", whiteSpace: "nowrap" }} className="text-container" as="h4" variant="h4">
+            Program Type:
+          </Text>
+          <form onSubmit={handleFormSubmit}>
+            <label className="radio-buttons">
+              <input
+                type="radio"
+                value="Cold Probe Collection"
+                checked={selectedValue === 'Cold Probe Collection'}
+                onChange={handleRadioChange}
+              />
+              Cold Probe Collection
+            </label>
+            <label className="radio-buttons">
+              <input
+                type="radio"
+                value="Mass Trial Collection"
+                checked={selectedValue === 'Mass Trial Collection'}
+                onChange={handleRadioChange}
+              />
+              Mass Trial Collection
+            </label>
+            <Button className="replace-button" type="submit" style={{ backgroundColor: 'lightgreen' }}>
+              Continue
+            </Button>
+          </form>
         </div>
       </div>
     </>

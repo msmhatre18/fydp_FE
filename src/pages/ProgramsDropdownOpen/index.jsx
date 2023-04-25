@@ -32,7 +32,7 @@ const ProgramsDropdownOpenPage = () => {
   return (
     <>
       <div className="bg-white_A700 flex flex-col font-inter gap-[12px] items-center justify-end mx-[auto] pt-[11px] w-[100%]">
-        <div className="flex md:flex-col flex-row md:gap-[20px] items-start justify-start max-w-[1105px] mx-[auto] md:px-[20px] w-[100%]">
+        <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
           <Img
             src="images/img_arrowup.svg"
             className="h-[33px] md:mt-[0] mt-[3px] w-[auto]"
@@ -40,9 +40,10 @@ const ProgramsDropdownOpenPage = () => {
             onClick={() => navigate(-1)}
           />
           <Text
-            className="md:ml-[0] ml-[415px] md:mt-[0] mt-[8px] not-italic text-black_900 text-center w-[auto]"
+            className="md:ml-[0] ml-[325px] "
             as="h2"
             variant="h2"
+            style={{ display: 'flex', gap: '0px', justifyContent: 'center', textAlign: 'center' }}
           >
             Program Templates
           </Text>
@@ -50,6 +51,8 @@ const ProgramsDropdownOpenPage = () => {
             <LogoutButton />
           </div>
         </div>
+
+
         <div className="flex flex-col items-center justify-center mt-10 w-full md:flex-row md:gap-4 md:justify-between md:mt-20">
           {programTemplates &&
             programTemplates.map(programTemplate => <ProgamRow

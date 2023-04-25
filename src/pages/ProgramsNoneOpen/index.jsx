@@ -54,22 +54,23 @@ const ProgramsNoneOpenPage = () => {
   }
   else programRows = <></>;
 
-
+  //
   return (
     <>
       <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[13px] w-[100%]">
         <div className="flex flex-col gap-[12px] items-center justify-start max-w-[1105px] mb-[8px] mt-[4px] mx-[auto] md:px-[20px] w-[100%]">
-          <div className="flex sm:flex-col flex-row sm:gap-[40px] items-start justify-between w-[100%]">
+          <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
             <Img
               src="images/img_arrowup.svg"
-              className="common-pointer h-[33px] w-[auto]"
-              onClick={() => navigate("/homepagepatients")}
+              className="h-[33px] md:mt-[0] mt-[3px] w-[auto]"
               alt="arrowup"
+              onClick={() => navigate(-1)}
             />
             <Text
-              className="not-italic text-black_900 text-center w-[auto]"
+              className="md:ml-[0] ml-[325px] "
               as="h2"
               variant="h2"
+              style={{ display: 'flex', gap: '0px', justifyContent: 'center', textAlign: 'center' }}
             >
               Programs for {kidsAbilityId}
             </Text>
@@ -77,23 +78,23 @@ const ProgramsNoneOpenPage = () => {
               <LogoutButton />
             </div>
           </div>
-          <div className="flex md:flex-col flex-row gap-[17px] items-start justify-between w-[100%]">
-            <div className="flex md:flex-1 flex-col items-start justify-start md:w-[100%] w-[auto]">
-              <List
-                className="flex-col gap-[1px] grid items-center w-[100%]"
-                orientation="vertical"
-              >
-                {programRows}
-              </List>
-              <Button className="create-button" onClick={() => navigate("/programsdropdownopen", { state: { kidsAbilityId: kidsAbilityId } })}>
-                Create New Program
-              </Button>
-            </div>
+
+          <div className="flex md:flex-1 flex-col items-start justify-start md:w-[100%] w-[auto]">
+            <List
+              className="flex-col gap-[1px] grid items-center w-[100%]"
+              orientation="vertical"
+            >
+              {programRows}
+            </List>
+            <Button className="create-button" onClick={() => navigate("/programsdropdownopen", { state: { kidsAbilityId: kidsAbilityId } })}>
+              Create New Program
+            </Button>
           </div>
         </div>
       </div>
     </>
   );
+
 };
 
 export default ProgramsNoneOpenPage;

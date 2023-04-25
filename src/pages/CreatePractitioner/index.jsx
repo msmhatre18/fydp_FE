@@ -14,9 +14,9 @@ const CreatePractitionerPage = () => {
     const [email, setEmail] = useState("");
     const [giveAdminRights, setGiveAdminRights] = useState(false);
     const location = useLocation();
-    if(!location.state) return <h1>You are not permitted to view this page</h1>
+    if (!location.state) return <h1>You are not permitted to view this page</h1>
     const isAdmin = location.state.isAdmin;
-    if(!location.state || !isAdmin) return <h1>You are not permitted to view this page</h1>
+    if (!location.state || !isAdmin) return <h1>You are not permitted to view this page</h1>
 
     const handleSubmit = () => {
         const url = encodeURI("/account/register");
@@ -27,25 +27,25 @@ const CreatePractitionerPage = () => {
             'lastName': lastName,
             'isAdmin': giveAdminRights
         }, {
-            headers: {'sessionToken': sessionToken},
+            headers: { 'sessionToken': sessionToken },
         })
-        .then((res) => {
-            console.log(res);
-            alert(`${firstName} ${lastName} has been successfully registered, they will receive an email with a new temporary password.`);
-            navigate("/accountdashboard");
-        })
-        .catch((err) => {
-            console.log(err);
-            if(err.response.status === 400) {
-                alert(`${firstName} ${lastName} cannot be created, they already exist.`);
-            }
-            else {
-                alert(`${firstName} ${lastName} cannot be created.`);
-            }
-            setFirstName("");
-            setLastName("");
-            setGiveAdminRights(false);
-        })
+            .then((res) => {
+                console.log(res);
+                alert(`${firstName} ${lastName} has been successfully registered, they will receive an email with a new temporary password.`);
+                navigate("/accountdashboard");
+            })
+            .catch((err) => {
+                console.log(err);
+                if (err.response.status === 400) {
+                    alert(`${firstName} ${lastName} cannot be created, they already exist.`);
+                }
+                else {
+                    alert(`${firstName} ${lastName} cannot be created.`);
+                }
+                setFirstName("");
+                setLastName("");
+                setGiveAdminRights(false);
+            })
     }
 
     return (
@@ -66,15 +66,11 @@ const CreatePractitionerPage = () => {
                                 variant="h2"
                                 style={{ textAlign: 'center' }}
                             >
-                                Invite Practitioner
+                                Invite Therapist
                             </Text>
-                            <Text
-                                className="common-pointer bg-white_A700 flex h-[40px] items-center justify-center mb-[3px] md:ml-[0] ml-[320px] not-italic outline outline-[1px] outline-black_900 rounded-[50%] text-black_900 text-center w-[40px]"
-                                variant="body2"
-                                onClick={() => navigate("/")}
-                            >
-                                Logout
-                            </Text>
+                            <div className="flex justify-end">
+                                <LogoutButton />
+                            </div>
                         </div>
                         <div className="data-container" style={{ display: 'flex', flexDirection: 'column', gap: '25px', justifyContent: 'center', alignItems: 'center' }}>
                             <input
@@ -99,16 +95,16 @@ const CreatePractitionerPage = () => {
                                 onChange={(e) => setLastName(e.target.value)}
                             />
                             <label> Give Admin Rights?</label>
-                            <input type="checkbox" checked={giveAdminRights} onChange={(e) => setGiveAdminRights(e.target.checked)}/>
-                            
-                            {email.length > 0 && firstName.length > 0 && lastName.length > 0 ? 
+                            <input type="checkbox" checked={giveAdminRights} onChange={(e) => setGiveAdminRights(e.target.checked)} />
+
+                            {email.length > 0 && firstName.length > 0 && lastName.length > 0 ?
                                 <button className="replace-button" style={{ backgroundColor: 'green' }} onClick={handleSubmit}>
                                     Submit
                                 </button>
-                            :
+                                :
                                 <button className="replace-button" style={{ backgroundColor: 'grey' }} disabled>
-                                Submit
-                            </button>
+                                    Submit
+                                </button>
                             }
                         </div>
 

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { axiosClient } from "constants/constants";
 import LogoutButton from "components/Logout";
 
+import './../../styles/DataCollection.css';
+
 const CreateClientPage = () => {
   const navigate = useNavigate();
   const [kidsAbilityId, setKidsAbilityId] = useState("");
@@ -38,26 +40,26 @@ const CreateClientPage = () => {
     <>
       <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[6px] w-[100%]">
         <div className="flex flex-col items-center justify-start max-w-[1102px] mb-[309px] mx-[auto] md:px-[20px] w-[100%]">
-          <div className="flex md:flex-col flex-row md:gap-[20px] items-end justify-start w-[100%]">
+          <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
             <Img
               src="images/img_arrowup.svg"
-              className="common-pointer h-[33px] mb-[18px] md:mt-[0] mt-[7px] w-[auto]"
+              className="common-pointer h-[33px] md:mt-[0] mt-[3px] w-[auto]"
               onClick={() => navigate(-1)}
               alt="arrowup"
             />
             <Text
-              className="md:ml-[0] ml-[344px] md:mt-[0] mt-[14px] not-italic text-black_900 text-left w-[auto]"
+              className="md:ml-[0] ml-[370px] not-italic text-black_900 text-center w-[auto]"
               as="h2"
               variant="h2"
             >
-              Create new Client
+              Create Client
             </Text>
             <div className="flex justify-end">
               <LogoutButton />
             </div>
           </div>
           <Text
-            className="mt-[202px] not-italic text-black_900 text-center w-[auto]"
+            className="mt-[25px] not-italic text-black_900 text-center w-[auto]"
             as="h4"
             variant="h4"
           >

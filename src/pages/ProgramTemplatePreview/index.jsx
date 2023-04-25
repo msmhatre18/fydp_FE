@@ -11,7 +11,7 @@ const ProgramTemplatePreviewPage = () => {
 
     return (
         <>
-            <div className="flex md:flex-col flex-row md:gap-[20px] items-start justify-start max-w-[1105px] mx-[auto] md:px-[20px] w-[100%]">
+            <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
                 <Img
                     src="images/img_arrowup.svg"
                     className="h-[33px] md:mt-[0] mt-[3px] w-[auto]"
@@ -19,9 +19,10 @@ const ProgramTemplatePreviewPage = () => {
                     onClick={() => navigate(-1)}
                 />
                 <Text
-                    className="md:ml-[0] ml-[415px] md:mt-[0] mt-[8px] not-italic text-black_900 text-center w-[auto]"
+                    className="md:ml-[0] ml-[325px] "
                     as="h2"
                     variant="h2"
+                    style={{ display: 'flex', gap: '0px', justifyContent: 'center', textAlign: 'center' }}
                 >
                     Program Templates
                 </Text>
@@ -29,6 +30,7 @@ const ProgramTemplatePreviewPage = () => {
                     <LogoutButton />
                 </div>
             </div>
+
             <iframe src={programTemplate.embeddableLink} width='100%' height='650px' frameborder='0'></iframe>
         </>
 

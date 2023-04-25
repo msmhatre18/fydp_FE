@@ -5,6 +5,7 @@ import ClientRow from "components/ClientRow";
 import { useNavigate, useLocation } from "react-router-dom";
 import { axiosClient } from "constants/constants";
 import './../../styles/DataCollection.css';
+import './../../styles/ProgramRow.css';
 import LogoutButton from "components/Logout";
 
 
@@ -62,24 +63,28 @@ const AddClienttoPractitionerPage = () => {
     <>
       <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[6px] w-[100%]">
         <div className="flex flex-col gap-[25px] items-center justify-start max-w-[1102px] mb-[206px] mx-[auto] md:px-[20px] w-[100%]">
-          <div className="flex sm:flex-col flex-row sm:gap-[40px] items-end justify-between w-[100%]">
+          <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
             <Img
               src="images/img_arrowup.svg"
-              className="common-pointer h-[33px] mb-[33px] sm:mt-[0] mt-[7px] w-[auto]"
-              onClick={() => navigate(-1)}
+              className="h-[33px] md:mt-[0] mt-[3px] w-[auto]"
               alt="arrowup"
+              onClick={() => navigate(-1)}
             />
             <Text
-              className="sm:mt-[0] mt-[29px] not-italic text-black_900 text-left w-[auto]"
+              className="md:ml-[0] ml-[325px] "
               as="h2"
               variant="h2"
+              style={{ display: 'flex', gap: '0px', justifyContent: 'center', textAlign: 'center' }}
             >
-              Add Client to Practitioner
+              Add Client to Therapist
             </Text>
             <div className="flex justify-end">
               <LogoutButton />
             </div>
           </div>
+
+
+
           <div className="flex md:flex-col flex-row gap-[17px] items-start justify-between w-[100%]">
             <div className="flex md:flex-1 flex-col items-start justify-start md:w-[100%] w-[auto]">
               <List

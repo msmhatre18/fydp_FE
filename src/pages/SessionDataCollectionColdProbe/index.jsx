@@ -13,25 +13,20 @@ const SessionDataCollectionColdProbePage = () => {
     <>
       <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[9px] w-[100%]">
         <div className="flex flex-col items-center justify-start max-w-[1111px] mb-[48px] mx-[auto] md:px-[20px] w-[100%]">
-          <div className="flex md:flex-col flex-row md:gap-[20px] items-start justify-start w-[100%]">
-            <div className="flex md:flex-1 flex-col items-center justify-start md:mt-[0] mt-[11px] md:w-[100%] w-[4%]">
-              <div className="bg-black_900 h-[6px] rounded-[3px] w-[100%]"></div>
-              <div className="bg-black_900 h-[6px] mt-[4px] rounded-[3px] w-[100%]"></div>
-              <div className="bg-black_900 h-[6px] mt-[4px] rounded-[3px] w-[100%]"></div>
-            </div>
-            <Text
-              className="md:ml-[0] ml-[406px] md:mt-[0] mt-[10px] not-italic text-black_900 text-center w-[auto]"
-              as="h3"
-              variant="h3"
-            >
-              Data Collection Cold Probe
-            </Text>
+          <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
             <Img
               src="images/img_arrowup.svg"
-              className="common-pointer h-[33px] md:ml-[0] ml-[349px] md:mt-[0] mt-[4px] w-[auto]"
+              className="common-pointer h-[33px] md:mt-[0] mt-[3px] w-[auto]"
               onClick={() => navigate(-1)}
               alt="arrowup"
             />
+            <Text
+              className="md:ml-[0] ml-[370px] not-italic text-black_900 text-center w-[auto]"
+              as="h2"
+              variant="h2"
+            >
+              Cold Probe
+            </Text>
             <div className="flex justify-end">
               <LogoutButton />
             </div>
@@ -78,11 +73,6 @@ const SessionDataCollectionColdProbePage = () => {
                 Finish and Save
               </Button>
             </div>
-            <Img
-              src="images/img_scrollbar.svg"
-              className="h-[373px] w-[auto]"
-              alt="scrollbar"
-            />
           </div>
         </div>
       </div>

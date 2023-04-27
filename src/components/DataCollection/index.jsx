@@ -1,14 +1,15 @@
 //import React from "react";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './../../styles/DataCollection.css';
 import { Text, Button } from "components";
 
 const DataCollection = (props) => {
   const [selectedOption, setSelectedOption] = useState('');
-
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
+  useEffect(() => props.handleRadioChange(selectedOption, props.target), [selectedOption]);
   return (
     <>
       <div className={`data-collection ${props.className}`}>
@@ -25,13 +26,13 @@ const DataCollection = (props) => {
             as="h5"
             variant="h5"
           >
-            Child Response?
+            Is Met
           </Text>
           <label className="radio-container">
             <input
               type="radio"
               value="Y"
-              checked={selectedOption === 'Y'}
+              checked={props.isRecorded && props.isMet}
               onChange={handleOptionChange}
             />
             Y
@@ -40,7 +41,7 @@ const DataCollection = (props) => {
             <input
               type="radio"
               value="N"
-              checked={selectedOption === 'N'}
+              checked={props.isRecorded && !props.isMet}
               onChange={handleOptionChange}
             />
             N

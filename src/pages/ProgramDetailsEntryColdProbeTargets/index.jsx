@@ -122,7 +122,7 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
     <>
       <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[9px] w-[100%]">
         <div className="flex flex-col justify-start max-w-[1098px] mb-[21px] mx-[auto] md:px-[20px] w-[100%]">
-          <div className="flex sm:flex-col flex-row md:gap-[40px] items-end justify-between w-[100%]">
+          <div className="data-collection">
             <Img
               src="images/img_arrowup.svg"
               className="common-pointer h-[33px] mb-[2px] sm:mt-[0] mt-[17px] w-[auto]"
@@ -134,19 +134,12 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
               as="h4"
               variant="h4"
             >
-              Program Name (Cold Probe)
+              Program Name (Cold Probe) Targets
             </Text>
             <div className="flex justify-end">
               <LogoutButton />
             </div>
           </div>
-          <Text
-            className="text-collection text-center"
-            as="h4"
-            variant="h4"
-          >
-            Targets
-          </Text>
           <div className="data-collection">
             <div className="flex items-center justify-start mb-[8px] md:w-[100%] w-[auto]">
               <List className="flex-col gap-[40px] grid items-center w-[100%]" orientation="vertical">

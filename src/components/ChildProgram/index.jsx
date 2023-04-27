@@ -12,7 +12,13 @@ const ChildProgram = (props) => {
       programId: props.id,
       kidsAbilityId: props.kidsAbilityId
     }});
-  }
+  };
+
+  const handleStartSession = () => {
+    navigate("/sessiondatacollectioncoldprobe", {state: {
+      programId: props.id
+    }});
+  };
 
   return (
     <>
@@ -27,7 +33,7 @@ const ChildProgram = (props) => {
           </Text>
           <div className="flex md:flex-col flex-row items-start justify-center mb-[7px] md:mt-[2px] mt-[2px]">
             <div className="button-container">
-              {!props.isMastered && <button className="create-button">Complete / Start Session</button>}
+              {!props.isMastered && <button className="create-button" onClick={handleStartSession}>Complete / Start Session</button>}
               <button className="create-button" onClick={handleViewHistory}>View History</button>
             </div>
             <Text

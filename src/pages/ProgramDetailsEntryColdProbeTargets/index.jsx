@@ -134,7 +134,7 @@ const ProgramDetailsEntryColdProbeTargetsPage = () => {
               as="h4"
               variant="h4"
             >
-              Program Name (Cold Probe)
+              Cold Probe Targets
             </Text>
             <div className="flex justify-end">
               <LogoutButton />

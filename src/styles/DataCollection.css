@@ -84,6 +84,27 @@
   font-size: clamp(12px, 1.5vw, 20px);
 }
 
+.text-container-session {
+  width: 100%;
+  max-width: 200px;
+  inline-size: 200px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 10px;
+  color: black;
+}
+
+.text-container-session h4 {
+  font-size: clamp(18px, 1.5vw, 24px);
+}
+
+.text-container-session h5 {
+  font-size: clamp(12px, 1.5vw, 20px);
+}
+
+
 .account-icon {
   width: 40px;
   height: 40px;

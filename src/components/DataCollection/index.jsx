@@ -1,4 +1,3 @@
-//import React from "react";
 import React, { useState, useEffect } from 'react';
 import './../../styles/DataCollection.css';
 import { Text, Button } from "components";
@@ -15,14 +14,14 @@ const DataCollection = (props) => {
       <div className={`data-collection ${props.className}`}>
         <div className="flex sm:flex-col flex-row sm:gap-[20px] items-start justify-start md:mt-[0] mt-[5px] md:w-[100%] w-[auto]">
           <Text
-            className="text-container"
+            className="text-container-session"
             as="h4"
             variant="h4"
           >
             {props.target}
           </Text>
           <Text
-            className="text-container"
+            className="text-container-session"
             as="h5"
             variant="h5"
           >

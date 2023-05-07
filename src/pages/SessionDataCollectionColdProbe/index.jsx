@@ -97,7 +97,7 @@ const SessionDataCollectionColdProbePage = () => {
     recordRows = records
       .filter(record => !record.isOmitted)
       .map(record => <DataCollection 
-        key={record.id} target={record.target} isRecorded={record.isRecorded} isMet={record.isMet} handleRadioChange={handleRadioChange} 
+        key={record.id} target={record.target} isRecorded={record.isRecorded} isMet={record.isMet} isInMaintenance={record.isInMaintenance} handleRadioChange={handleRadioChange} 
          />);
   }
   else {

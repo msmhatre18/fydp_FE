@@ -18,7 +18,7 @@ const DataCollection = (props) => {
             as="h4"
             variant="h4"
           >
-            {props.target}
+            {props.isInMaintenance ? <mark>{props.target}</mark> : props.target}
           </Text>
           <Text
             className="text-container-session"

@@ -22,8 +22,8 @@ const SessionDataCollectionColdProbePage = () => {
       }
     })
     .then(res => {
-      console.log(res.data.clientProgramSessionColdProbeRecords)
-      setRecords(res.data.clientProgramSessionColdProbeRecords)
+      console.log(res.data.clientProgramSessionColdProbeRecords);
+      setRecords(res.data.clientProgramSessionColdProbeRecords);
     })
   }, [location.state.programId]);
 
@@ -42,6 +42,27 @@ const SessionDataCollectionColdProbePage = () => {
       
       }
     });
+    setRecords(recordsCopy);
+  }
+
+  const handleReplacement = (target) => {
+    let replacementTarget = prompt(`Please enter the replacement for ${target}: `);
+    const recordsCopy = [...records];
+    for(let i = 0; i < recordsCopy.length; i++) {
+      let record = recordsCopy[i];
+      if(record.target === target) {
+        record.isOmitted = true;
+        let replacement = {
+          'target': replacementTarget,
+          'isMet': false,
+          'isOmitted': false,
+          'isRecorded': false,
+          'canOmit': false
+        };
+        recordsCopy.splice(i + 1, 0, replacement);
+        break;
+      }
+    }
     setRecords(recordsCopy);
   }
 
@@ -97,7 +118,7 @@ const SessionDataCollectionColdProbePage = () => {
     recordRows = records
       .filter(record => !record.isOmitted)
       .map(record => <DataCollection 
-        key={record.id} target={record.target} isRecorded={record.isRecorded} isMet={record.isMet} isInMaintenance={record.isInMaintenance} handleRadioChange={handleRadioChange} 
+        key={record.id} handleReplacement={handleReplacement} canOmit={record.canOmit} target={record.target} isRecorded={record.isRecorded} isMet={record.isMet} isInMaintenance={record.isInMaintenance} handleRadioChange={handleRadioChange} 
          />);
   }
   else {
@@ -128,20 +149,7 @@ const SessionDataCollectionColdProbePage = () => {
           </div>
           <div className="flex md:flex-col flex-row gap-[35px] items-start justify-start md:w-[100%] w-[92%]">
             <div className="flex flex-col justify-start md:mt-[0] mt-[40px] md:w-[100%] w-[96%]">
-              
              {recordRows}
-              <div className="flex flex-row gap-[28px] items-center justify-start md:ml-[0] ml-[7px] mt-[38px] w-[10%] md:w-[100%]">
-                <Img
-                  src="images/img_arrow15.svg"
-                  className="h-[30px] relative top-[50px] w-[auto]"
-                  alt="arrowFifteen"
-                />
-                <Img
-                  src="images/img_arrow14.svg"
-                  className="h-[30px] relative top-[50px] w-[auto]"
-                  alt="arrowFourteen"
-                />
-              </div>
               <Button onClick={handlePersist} className="bg-red_A700 cursor-pointer font-normal leading-[normal] min-w-[195px] md:ml-[0] ml-[764px] mr-[12px] mt-[68px] not-italic py-[3px] rounded-[16px] text-[20px] text-center text-white_A700 w-[auto]">
                 Finish and Save
               </Button>

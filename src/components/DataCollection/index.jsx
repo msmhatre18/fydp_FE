@@ -46,7 +46,7 @@ const DataCollection = (props) => {
             N
          </label>
         </div>
-        <Button className="replace-button" style={{ display: "block", margin: "auto", textAlign: "center", verticalAlign: "middle" }}>Replace</Button>
+        {props.canOmit && <Button className="replace-button" onClick={() => props.handleReplacement(props.target)} style={{ display: "block", margin: "auto", textAlign: "center", verticalAlign: "middle" }}>Replace</Button>}
       </div>
     </>
   );

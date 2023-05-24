@@ -20,6 +20,15 @@ const ChildProgram = (props) => {
     }});
   };
 
+  let progress;
+  if(props.progress != null) {
+    let formattedPercentage = Math.round(props.progress * 100) / 100
+    progress = `${formattedPercentage}%`;
+  }
+  else {
+    progress = '';
+  }
+
   return (
     <>
       <div className = {`program-row ${props.className}`}>
@@ -47,7 +56,7 @@ const ChildProgram = (props) => {
               as="h5"
               variant="h5"
             >
-              0%
+              {progress}
             </Text>
           </div>
         </div>

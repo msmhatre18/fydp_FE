@@ -48,6 +48,7 @@ const ProgramsNoneOpenPage = () => {
             key={program.id}
             isMastered={program.isMastered}
             embeddableProgramTemplateLink={program.embeddableProgramTemplateLink}
+            progress={program.progress}
           />
         ))
     );

@@ -1,33 +1,65 @@
 import React from "react";
+import { useState } from "react";
 import './../../styles/input.css';
 import './../../styles/DataCollection.css';
 import { Img, Text, Input, Button } from "components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import LogoutButton from "components/Logout";
 
 const ProgramDetailsEntryMassTrialPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [massTrialData, setMassTrialData] = useState(() => {
+    return {
+      child: "",
+      taskName: "",
+      sd: "",
+      targetMastery: "",
+      revisionCriteria: "",
+      promptLegend: "",
+      instructions: ""
+    }
+  });
+
+  const handleSubmit = () => {
+    const prevState = location.state;
+    const nextState = {
+      name: prevState.programName,
+      kidsAbilityId: prevState.kidsAbilityId,
+      programTemplate: {
+        name: prevState.programTemplate.name
+      },
+      massTrialSheet: { ...massTrialData }
+    };
+    navigate("/programdetailsentrymasstrialtargets", { state: nextState });
+  }
+
+
 
   return (
     <>
       <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[9px] w-[100%]">
         <div className="flex flex-col md:gap-[40px] gap-[87px] justify-start max-w-[1098px] mb-[21px] mx-[auto] md:px-[20px] w-[100%]">
-          <div className="flex md:flex-col flex-row md:gap-[40px] items-start justify-between w-[100%]">
-            <div className="flex md:flex-1 flex-col justify-start md:mt-[0] mt-[8px] md:w-[100%] w-[88%]">
-              <div className="flex sm:flex-col flex-row sm:gap-[40px] items-end justify-between md:w-[100%] w-[75%]">
+          <div className="">
+            <div className="">
+              <div className="data-collection" style={{ maxWidth: '1500px', display: 'flex', alignItems: 'center', justifyContent: 'normal', width: '100%' }}>
                 <Img
                   src="images/img_arrowup.svg"
-                  className="common-pointer h-[33px] mb-[2px] sm:mt-[0] mt-[8px] w-[auto]"
+                  className="common-pointer h-[33px] md:mt-[0] mt-[3px] w-[auto]"
                   onClick={() => navigate(-1)}
                   alt="arrowup"
                 />
                 <Text
-                  className="text-collection text-center"
-                  as="h4"
-                  variant="h4"
+                  className="flex-grow text-center"
+                  as="h2"
+                  variant="h2"
+                  style={{ margin: 0, marginLeft: '7em' }}
                 >
-                  Program Name (Mass Trial)
+                  {`${location.state.programName} (Mass Trial)`}
                 </Text>
+                <div style={{ flexShrink: 1 }}>
+                  <LogoutButton />
+                </div>
               </div>
               <div className="flex flex-col items-center justify-start md:ml-[0] ml-[89px] mt-[21px] md:w-[100%] w-[91%]">
                 <div className="data-collection" style={{ display: 'flex', gap: '20px' }}>
@@ -36,66 +68,75 @@ const ProgramDetailsEntryMassTrialPage = () => {
                     className="input"
                     name="groupFortyOne"
                     placeholder="Child"
+                    value={massTrialData.child}
+                    onChange={(e) => setMassTrialData({ ...massTrialData, child: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
                     className="input"
                     name="groupFortyTwo"
-                    placeholder="Code"
+                    placeholder="Task Name"
+                    value={massTrialData.taskName}
+                    onChange={(e) => setMassTrialData({ ...massTrialData, taskName: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
                     className="input"
                     type="text"
                     name="groupFortyThree"
-                    placeholder="Task Name"
+                    placeholder="SD"
+                    value={massTrialData.sd}
+                    onChange={(e) => setMassTrialData({ ...massTrialData, sd: e.target.value })}
                   ></Input>
                 </div>
                 <div className="data-collection" style={{ display: 'flex', gap: '20px' }} >
                   <Input
                     wrapClassName="input-box"
                     className="input"
-                    name="objective"
-                    placeholder="Objective"
+                    name="Target Mastery"
+                    placeholder="Target Mastery"
                     style={{ marginRight: '50px', padding: '20px' }}
+                    value={massTrialData.targetMastery}
+                    onChange={(e) => setMassTrialData({ ...massTrialData, targetMastery: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-box"
                     className="input"
-                    name="example"
-                    placeholder="Example"
+                    name="Revision Criteria"
+                    placeholder="Revision Criteria"
                     style={{ marginRight: '50px', padding: '20px' }}
+                    value={massTrialData.revisionCriteria}
+                    onChange={(e) => setMassTrialData({ ...massTrialData, revisionCriteria: e.target.value })}
                   ></Input>
                 </div>
                 <div className="data-collection" style={{ display: 'flex', gap: '20px' }}>
                   <Input
                     wrapClassName="input-big"
                     className="text-area"
-                    name="sd"
-                    placeholder="SD"
+                    name="Prompt Legend"
+                    placeholder="Prompt Legend"
                     type="textarea"
+                    value={massTrialData.promptLegend}
+                    onChange={(e) => setMassTrialData({ ...massTrialData, promptLegend: e.target.value })}
                   ></Input>
                   <Input
                     wrapClassName="input-big"
                     className="text-area"
-                    name="criteria"
-                    placeholder="Criteria"
+                    name="Instructions"
+                    placeholder="Instructions"
                     type="textarea"
+                    value={massTrialData.instructions}
+                    onChange={(e) => setMassTrialData({ ...massTrialData, instructions: e.target.value })}
                   ></Input>
                 </div>
-              </div>
-            </div>
-            <div className="flex md:flex-1 flex-col gap-[10px] justify-start md:w-[100%] w-[5%]">
-              <div className="flex justify-end">
-                <LogoutButton />
               </div>
             </div>
           </div>
           <Button
             className="replace-button" style={{ backgroundColor: 'lightgreen' }}
-            onClick={() => navigate("/programdetailsentrycoldprobetargets")}
+            onClick={handleSubmit}
           >
-            Finish
+            Add Targets
           </Button>
         </div>
       </div>

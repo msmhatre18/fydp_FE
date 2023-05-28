@@ -56,7 +56,7 @@ const ProgramDetailsEntryColdProbePage = () => {
                   variant="h2"
                   style={{ margin: 0, marginLeft: '7em' }}
                 >
-                  Program Name (Cold Probe)
+                  {`${location.state.programName} (Cold Probe)`}
                 </Text>
                 <div style={{ flexShrink: 1 }}>
                   <LogoutButton />

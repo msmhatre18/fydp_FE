@@ -49,6 +49,7 @@ const ProgramsNoneOpenPage = () => {
             isMastered={program.isMastered}
             embeddableProgramTemplateLink={program.embeddableProgramTemplateLink}
             progress={program.progress}
+            type={program.type}
           />
         ))
     );

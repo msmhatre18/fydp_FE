@@ -31,7 +31,7 @@ function RadioButtons(props) {
       <div className={`data-collection ${props.className}`} style={{ width: '550px' }}>
         <div className="radio-container">
           <Text style={{ color: "black", whiteSpace: "nowrap" }} className="text-container" as="h4" variant="h4">
-            Program Type:
+            Data Type:
           </Text>
           <form onSubmit={handleFormSubmit}>
             <label className="radio-buttons">

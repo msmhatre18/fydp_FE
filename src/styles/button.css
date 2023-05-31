@@ -1,0 +1,5 @@
+.button-container {
+    display: flex;
+    gap: 200px;
+    justify-content: space-between;
+  }

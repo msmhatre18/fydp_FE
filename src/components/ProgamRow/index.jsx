@@ -22,7 +22,7 @@ const ProgamRow = (props) => {
               programTemplate: props.programTemplate,
               kidsAbilityId: props.kidsAbilityId
             }
-          })}>Preview Template</button>
+          })}>Preview Program</button>
           <button className="create-button" onClick={() => navigate("/programdetailsentry", {
             state: {
               programTemplate: props.programTemplate,

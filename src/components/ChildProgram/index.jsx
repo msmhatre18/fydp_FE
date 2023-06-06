@@ -17,12 +17,14 @@ const ChildProgram = (props) => {
   const handleStartSession = () => {
     if(props.type === "coldProbe") {
       navigate("/sessiondatacollectioncoldprobe", {state: {
-        programId: props.id
+        programId: props.id,
+        kidsAbilityId: props.kidsAbilityId
       }});
     }
     else {
       navigate("/sessiondatacollectionmasstrial", {state: {
-        programId: props.id
+        programId: props.id,
+        kidsAbilityId: props.kidsAbilityId
       }});
     }
     

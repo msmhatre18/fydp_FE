@@ -7,6 +7,7 @@ import './../../styles/input.css';
 import './../../styles/button.css';
 import LogoutButton from "components/Logout";
 import { axiosClient } from "constants/constants";
+import behaviourIcon from './../../assets/images/behaviourIcon.jpeg';
 
 const SessionDataCollectionMassTrialPage = () => {
   const navigate = useNavigate();
@@ -108,9 +109,11 @@ const SessionDataCollectionMassTrialPage = () => {
     navigate("/accountdashboard");
   }
 
-  const handleNavToLast = () => {
+  const handleNavToBehaviour = () => {
+    console.log("clicked");
+    const kidsAbilityId = location.state.kidsAbilityId;
     saveSession();
-    navigate(-1);
+    navigate("/sessionbehaviouraldata" , { state: { kidsAbilityId: kidsAbilityId } });
   }
 
   const handlePersist = () => {
@@ -160,9 +163,9 @@ const SessionDataCollectionMassTrialPage = () => {
         <div className="flex flex-col items-center justify-start max-w-[1111px] mb-[48px] mx-[auto] md:px-[20px] w-[100%]">
           <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
             <Img
-              src="images/img_arrowup.svg"
+              src={behaviourIcon}
               className="common-pointer h-[33px] md:mt-[0] mt-[3px] w-[auto]"
-              onClick={() => handleNavToLast}
+              onClick={() => handleNavToBehaviour()}
               alt="arrowup"
             />
             <Text

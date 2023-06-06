@@ -79,20 +79,20 @@ const DataCollectionMassTrial = (props) => {
             as="h6"
             variant="h6"
           >
-            {props.isInMaintenance ? <mark>{props.target}</mark> : props.target}
+            {props.target}
           </Text>
           <Text
             className="text-container-session"
             as="h6"
             variant="h6"
           >
-            Last Rating: {props.prevRating}
+            Prev Prompt Lvl: {props.prevRating}
           </Text>
           <label className="radio-container">
             <input className='input-text'
               type="text"
               value={props.rating}
-              placeholder="New Rating"
+              placeholder="Prompt Lvl"
               onChange={handleRatingChange}
             />
          </label>

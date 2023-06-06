@@ -45,7 +45,7 @@ const ProgramsDropdownOpenPage = () => {
             variant="h2"
             style={{ display: 'flex', gap: '0px', justifyContent: 'center', textAlign: 'center' }}
           >
-            Program Templates
+            Programs
           </Text>
           <div className="flex justify-end">
             <LogoutButton />

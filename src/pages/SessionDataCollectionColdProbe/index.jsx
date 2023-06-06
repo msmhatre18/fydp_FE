@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import './../../styles/input.css';
 import LogoutButton from "components/Logout";
 import { axiosClient } from "constants/constants";
+import behaviourIcon from './../../assets/images/behaviourIcon.jpeg';
 
 const SessionDataCollectionColdProbePage = () => {
   const navigate = useNavigate();
@@ -101,9 +102,10 @@ const SessionDataCollectionColdProbePage = () => {
     navigate("/accountdashboard");
   }
 
-  const handleNavToLast = () => {
+  const handleNavToBehaviour = () => {
+    const kidsAbilityId = location.state.kidsAbilityId;
     saveSession();
-    navigate(-1);
+    navigate("/sessionbehaviouraldata" , { state: { kidsAbilityId: kidsAbilityId } });
   }
 
   const handlePersist = () => {
@@ -130,10 +132,10 @@ const SessionDataCollectionColdProbePage = () => {
       <div className="bg-white_A700 flex font-inter items-center justify-start mx-[auto] p-[9px] w-[100%]">
         <div className="flex flex-col items-center justify-start max-w-[1111px] mb-[48px] mx-[auto] md:px-[20px] w-[100%]">
           <div className="data-collection" style={{ display: 'flex', gap: '25px' }}>
-            <Img
-              src="images/img_arrowup.svg"
+          <Img
+              src={behaviourIcon}
               className="common-pointer h-[33px] md:mt-[0] mt-[3px] w-[auto]"
-              onClick={() => handleNavToLast}
+              onClick={() => handleNavToBehaviour()}
               alt="arrowup"
             />
             <Text
